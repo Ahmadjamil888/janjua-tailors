@@ -16,14 +16,13 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('production')) {
             URL::forceScheme('https'); // ✅ Forces HTTPS for all URLs (routes, assets, etc.)
             
-            // Railway-specific HTTPS configuration
-            $this->app['request']->server->set('HTTPS', 'on');
-            $this->app['request']->server->set('SERVER_PORT', 443);
-            $this->app['request']->server->set('HTTP_X_FORWARDED_PROTO', 'https');
-            $this->app['request']->server->set('HTTP_X_FORWARDED_PORT', 443);
+            // Railway-specific HTTPS configuration - simpler approach
+            if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+                URL::forceScheme('https');
+            }
             
-            // Trust Railway's proxy
-            $this->app['request']->setTrustedProxies(['*'], \Illuminate\Http\Request::HEADER_X_FORWARDED_ALL);
+            // Trust all proxies for Railway
+            $this->app['request']->setTrustedProxies(['*'], -1);
         }
     }
 }
