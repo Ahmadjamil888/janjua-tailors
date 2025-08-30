@@ -61,19 +61,88 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 // Debug route (remove after fixing)
-Route::get('/debug-admin', function () {
-    $user = \App\Models\User::where('email', 'janjuatailors@gmail.com')->first();
-    if ($user) {
+Route::get('/debug-auth', function () {
+    try {
+        // Check database connection
+        $dbConnected = \Illuminate\Support\Facades\DB::connection()->getPdo() ? true : false;
+        
+        // Check if users table exists and has data
+        $userCount = \App\Models\User::count();
+        $users = \App\Models\User::select('id', 'name', 'email', 'role')->get();
+        
+        // Check admin user specifically
+        $adminUser = \App\Models\User::where('email', 'janjuatailors@gmail.com')->first();
+        
+        // Check session configuration
+        $sessionDriver = config('session.driver');
+        $sessionLifetime = config('session.lifetime');
+        
         return response()->json([
-            'user_exists' => true,
-            'name' => $user->name,
-            'email' => $user->email,
-            'role' => $user->role,
-            'is_admin' => $user->isAdmin(),
-            'password_check' => \Illuminate\Support\Facades\Hash::check('JanjuaTailors@4590', $user->password)
+            'database_connected' => $dbConnected,
+            'total_users' => $userCount,
+            'users' => $users,
+            'admin_user' => $adminUser ? [
+                'exists' => true,
+                'name' => $adminUser->name,
+                'email' => $adminUser->email,
+                'role' => $adminUser->role,
+                'is_admin' => $adminUser->isAdmin(),
+                'password_check' => \Illuminate\Support\Facades\Hash::check('JanjuaTailors@4590', $adminUser->password)
+            ] : ['exists' => false],
+            'session_config' => [
+                'driver' => $sessionDriver,
+                'lifetime' => $sessionLifetime,
+                'domain' => config('session.domain'),
+                'secure' => config('session.secure_cookie'),
+            ],
+            'app_config' => [
+                'env' => config('app.env'),
+                'url' => config('app.url'),
+                'debug' => config('app.debug'),
+            ]
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => true,
+            'message' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
         ]);
     }
-    return response()->json(['user_exists' => false]);
+});
+
+// Test login route (remove after fixing)
+Route::get('/test-login', function () {
+    try {
+        $credentials = [
+            'email' => 'janjuatailors@gmail.com',
+            'password' => 'JanjuaTailors@4590'
+        ];
+        
+        if (\Illuminate\Support\Facades\Auth::attempt($credentials)) {
+            $user = \Illuminate\Support\Facades\Auth::user();
+            return response()->json([
+                'login_success' => true,
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'role' => $user->role,
+                    'is_admin' => $user->isAdmin()
+                ],
+                'redirect_url' => $user->isAdmin() ? route('admin.dashboard') : route('dashboard')
+            ]);
+        } else {
+            return response()->json([
+                'login_success' => false,
+                'message' => 'Invalid credentials'
+            ]);
+        }
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => true,
+            'message' => $e->getMessage()
+        ]);
+    }
 });
 
 // Static Pages
