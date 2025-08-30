@@ -1,0 +1,79 @@
+<?php
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CustomOrderController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    if (auth()->user()->isAdmin()) {
+        return redirect()->route('admin.dashboard');
+    }
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    // Custom Order Routes
+    Route::get('/custom-order/start', [CustomOrderController::class, 'start'])->name('custom-order.start');
+    Route::post('/custom-order/store-details', [CustomOrderController::class, 'storeDetails'])->name('custom-order.store-details');
+    Route::get('/custom-order/measurements/{order}', [CustomOrderController::class, 'measurements'])->name('custom-order.measurements');
+    Route::post('/custom-order/store-measurements', [CustomOrderController::class, 'storeMeasurements'])->name('custom-order.store-measurements');
+    Route::get('/custom-order/address/{order}', [CustomOrderController::class, 'address'])->name('custom-order.address');
+    Route::post('/custom-order/store-address', [CustomOrderController::class, 'storeAddress'])->name('custom-order.store-address');
+    Route::get('/custom-order/confirmation/{order}', [CustomOrderController::class, 'confirmation'])->name('custom-order.confirmation');
+    
+    // User Dashboard
+    Route::get('/my-orders', [CustomOrderController::class, 'myOrders'])->name('my-orders');
+    Route::get('/order/{order}', [CustomOrderController::class, 'orderDetails'])->name('order.details');
+});
+
+// Admin Routes
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
+    Route::get('/orders/{order}', [AdminController::class, 'orderDetails'])->name('orders.details');
+    Route::post('/orders/{order}/update-status', [AdminController::class, 'updateOrderStatus'])->name('orders.update-status');
+    
+    // Product Management
+    Route::get('/products', [ProductController::class, 'adminIndex'])->name('products.index');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+    
+    // Customer Management
+    Route::get('/customers', [AdminController::class, 'customers'])->name('customers.index');
+    Route::get('/customers/{customer}', [AdminController::class, 'customerDetails'])->name('customers.details');
+});
+
+// Products (Public)
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+
+// Static Pages
+Route::get('/heritage', function () { return view('pages.heritage'); })->name('pages.heritage');
+Route::get('/craftsmanship', function () { return view('pages.craftsmanship'); })->name('pages.craftsmanship');
+Route::get('/innovation', function () { return view('pages.innovation'); })->name('pages.innovation');
+Route::get('/quality', function () { return view('pages.quality'); })->name('pages.quality');
+Route::get('/delivery', function () { return view('pages.delivery'); })->name('pages.delivery');
+Route::get('/alterations', function () { return view('pages.alterations'); })->name('pages.alterations');
+Route::get('/testimonials', function () { return view('pages.testimonials'); })->name('pages.testimonials');
+Route::get('/contact', function () { return view('pages.contact'); })->name('pages.contact');
+Route::get('/size-guide', function () { return view('pages.size-guide'); })->name('pages.size-guide');
+Route::get('/faq', function () { return view('pages.faq'); })->name('pages.faq');
+Route::get('/care', function () { return view('pages.care'); })->name('pages.care');
+Route::get('/privacy', function () { return view('pages.privacy'); })->name('pages.privacy');
+Route::get('/terms', function () { return view('pages.terms'); })->name('pages.terms');
+Route::get('/sitemap', function () { return view('pages.sitemap'); })->name('pages.sitemap');
+
+require __DIR__.'/auth.php';

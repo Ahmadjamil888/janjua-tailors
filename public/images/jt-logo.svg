@@ -1,0 +1,26 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .logo-text { 
+        font-family: "Didot", "Bodoni MT", "Garamond", serif; 
+        font-weight: 600; 
+        fill: #1d1d1f; 
+      }
+      .logo-border { 
+        fill: none; 
+        stroke: #1d1d1f; 
+        stroke-width: 2; 
+      }
+    </style>
+  </defs>
+  
+  <!-- Elegant border -->
+  <circle cx="50" cy="50" r="45" class="logo-border"/>
+  
+  <!-- JT Text -->
+  <text x="50" y="60" text-anchor="middle" class="logo-text" font-size="32">JT</text>
+  
+  <!-- Decorative elements -->
+  <line x1="20" y1="25" x2="80" y2="25" class="logo-border"/>
+  <line x1="20" y1="75" x2="80" y2="75" class="logo-border"/>
+</svg>
