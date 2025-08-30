@@ -60,6 +60,22 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
+// Debug route (remove after fixing)
+Route::get('/debug-admin', function () {
+    $user = \App\Models\User::where('email', 'janjuatailors@gmail.com')->first();
+    if ($user) {
+        return response()->json([
+            'user_exists' => true,
+            'name' => $user->name,
+            'email' => $user->email,
+            'role' => $user->role,
+            'is_admin' => $user->isAdmin(),
+            'password_check' => \Illuminate\Support\Facades\Hash::check('JanjuaTailors@4590', $user->password)
+        ]);
+    }
+    return response()->json(['user_exists' => false]);
+});
+
 // Static Pages
 Route::get('/heritage', function () { return view('pages.heritage'); })->name('pages.heritage');
 Route::get('/craftsmanship', function () { return view('pages.craftsmanship'); })->name('pages.craftsmanship');
