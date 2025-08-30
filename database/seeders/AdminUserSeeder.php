@@ -14,13 +14,16 @@ class AdminUserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Janjua Tailors Admin',
-            'email' => 'janjuatailors@gmail.com',
-            'password' => Hash::make('JanjuaTailors@4590'),
-            'role' => 'admin',
-            'phone' => '+92-300-1234567',
-            'address' => 'Gujranwala, Pakistan',
-        ]);
+        // Create admin user only if it doesn't exist
+        if (!User::where('email', 'janjuatailors@gmail.com')->exists()) {
+            User::create([
+                'name' => 'Janjua Tailors Admin',
+                'email' => 'janjuatailors@gmail.com',
+                'password' => Hash::make('JanjuaTailors@4590'),
+                'role' => 'admin',
+                'phone' => '+92-300-1234567',
+                'address' => 'Gujranwala, Pakistan',
+            ]);
+        }
     }
 }
