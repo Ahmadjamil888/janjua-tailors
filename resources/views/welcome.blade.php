@@ -561,7 +561,7 @@
             text-align: center;
         }
 
-        .stat-number { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: #8B4513; display: block; }
+        .stat-number { font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 700; color: #8B4513; display: block; letter-spacing: 0; }
 
         .stat-label {
             font-size: 0.9rem;
@@ -569,6 +569,14 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
+        /* Centered, elegant layout tweaks for Atelier + Heritage */
+        .section.atelier .section-header,
+        .section.heritage-block .section-header { text-align: center; }
+        .section.atelier .values-grid { justify-items: center; gap: 1.5rem; }
+        .section.atelier .value-card { max-width: 420px; }
+        .section.heritage-block .content-grid { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+        .section.heritage-block .stats-grid { justify-items: center; gap: 2rem; }
 
         /* Process Section */
         .process-grid {
@@ -771,7 +779,7 @@
     </section>
 
     <!-- Atelier Services -->
-    <section class="section premium" style="background:#fff;">
+    <section class="section premium atelier" style="background:#fff;">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Atelier Services</h2>
@@ -804,7 +812,7 @@
     </section>
 
     <!-- Heritage (quiet and minimal) -->
-    <section class="section" style="background:#fafafa;">
+    <section class="section heritage-block" style="background:#fafafa;">
         <div class="container">
             <div class="content-grid">
                 <div>
