@@ -27,9 +27,35 @@ body {
 }
 
 .navbar.scrolled {
-    background: transparent;
-    box-shadow: none;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 2px 14px rgba(0,0,0,0.06);
 }
+
+/* Navbar colors - default (top) white on transparent */
+.navbar .nav-brand,
+.navbar .nav-links a {
+    color: #ffffff;
+}
+
+.navbar .nav-links a::after {
+    background: #ffffff;
+}
+
+/* Hamburger color default white, switches on scroll */
+.navbar .nav-toggle span { background: #ffffff; }
+
+/* On scroll: switch to dark text */
+.navbar.scrolled .nav-brand,
+.navbar.scrolled .nav-links a {
+    color: #1a1a1a;
+}
+
+.navbar.scrolled .nav-links a::after {
+    background: #1a1a1a;
+}
+
+.navbar.scrolled .nav-toggle span { background: #1a1a1a; }
 
 .nav-container {
     max-width: 1400px;
@@ -183,11 +209,11 @@ body {
 }
 
 .section-title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800;
+    font-weight: 700;
     margin-bottom: 1rem;
-    color: #000;
+    color: #1a1a1a;
     letter-spacing: -0.5px;
 }
 
@@ -281,11 +307,11 @@ body {
 }
 
 .value-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
     margin-bottom: 1rem;
-    color: #000;
+    color: #1a1a1a;
 }
 
 .value-text {
@@ -334,11 +360,11 @@ body {
 }
 
 .member-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #000;
+    color: #1a1a1a;
 }
 
 .member-role {
@@ -529,11 +555,11 @@ body {
 }
 
 .step-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #000;
+    color: #1a1a1a;
 }
 
 .step-description {
@@ -568,11 +594,11 @@ body {
 }
 
 .specialty-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
     margin-bottom: 1rem;
-    color: #000;
+    color: #1a1a1a;
 }
 
 .specialty-text {
@@ -967,9 +993,9 @@ body {
 }
 
 .gallery-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
@@ -1146,11 +1172,11 @@ body {
 }
 
 .lightbox-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #000;
+    color: #1a1a1a;
 }
 
 .lightbox-description {
@@ -1163,11 +1189,11 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: #611bf8;
+    padding: 1.2rem 3rem;
+    background: #8B4513;
     color: #fff;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.5px;
     transition: all 0.4s ease;
     text-transform: uppercase;
@@ -1177,9 +1203,9 @@ body {
 }
 
 .cta-button:hover {
-    background: #4607d0;
+    background: #6d3410;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
 }
 
 .cta-button.primary {
@@ -1188,12 +1214,12 @@ body {
 
 .cta-button.secondary {
     background: transparent;
-    color: #611bf8;
-    border: 2px solid #611bf8;
+    color: #8B4513;
+    border: 2px solid #8B4513;
 }
 
 .cta-button.secondary:hover {
-    background: #611bf8;
+    background: #8B4513;
     color: #fff;
 }
 
@@ -1206,9 +1232,10 @@ body {
 
 /* Footer */
 .footer {
-    background: #1a1a1a;
-    color: #fff;
+    background: #ffffff;
+    color: #1a1a1a;
     padding: 4rem 0 2rem;
+    border-top: 1px solid #eaeaea;
 }
 
 .footer-grid {
@@ -1222,7 +1249,7 @@ body {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #fff;
+    color: #1a1a1a;
     text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: 1px;
@@ -1237,21 +1264,21 @@ body {
 }
 
 .footer-links a {
-    color: #ccc;
+    color: #555;
     text-decoration: none;
     transition: color 0.3s ease;
     font-size: 0.9rem;
 }
 
 .footer-links a:hover {
-    color: #fff;
+    color: #000;
 }
 
 .footer-bottom {
-    border-top: 1px solid #333;
+    border-top: 1px solid #eaeaea;
     padding-top: 2rem;
     text-align: center;
-    color: #999;
+    color: #777;
     font-size: 0.9rem;
 }
 

@@ -13,13 +13,12 @@
     <link rel="stylesheet" href="{{ asset('css/shared-styles.css') }}">
     
     <style>
-        /* Use shared theme: black text and Inter font already from shared-styles */
-        .section-title, .product-name { color: #000; }
-        .product-price { color: #611bf8; }
-        .btn-primary, .mobile-filters-toggle, .filter-btn { background: #611bf8; border: none; border-radius: 9999px; }
-        .btn-primary:hover, .mobile-filters-toggle:hover, .filter-btn:hover { background: #4607d0; }
-        .btn-secondary { border-radius: 9999px; color: #611bf8; border: 2px solid #611bf8; background: transparent; }
-        .btn-secondary:hover { background: #611bf8; color: #fff; }
+        /* Old-money theme accents */
+        .product-price { color: #8B4513; }
+        .btn-primary, .mobile-filters-toggle, .filter-btn { background: #8B4513; border: none; border-radius: 9999px; }
+        .btn-primary:hover, .mobile-filters-toggle:hover, .filter-btn:hover { background: #6d3410; }
+        .btn-secondary { border-radius: 9999px; color: #8B4513; border: 2px solid #8B4513; background: transparent; }
+        .btn-secondary:hover { background: #8B4513; color: #fff; }
         .products-count { color: #000; }
 
         /* Main Content */
@@ -50,9 +49,9 @@
         }
 
         .filters-title {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 600;
             color: #000;
             margin-bottom: 2.5rem;
             display: flex;
@@ -435,7 +434,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .product-name { font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: #000; margin-bottom: 1rem; line-height: 1.3; }
+        .product-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: #000; margin-bottom: 1rem; line-height: 1.3; }
 
         .product-price { font-size: 1.1rem; font-weight: 700; color: #611bf8; margin-bottom: 1rem; }
 
@@ -598,6 +597,8 @@
                 overflow-y: auto;
                 transition: left 0.3s ease;
                 border-radius: 0;
+                background: #ffffff;
+                padding-top: 5rem;
             }
 
             .filters-sidebar.active {

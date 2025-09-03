@@ -146,7 +146,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 28px;
             font-weight: 600;
-            color: #1a1a1a;
+            color: #ffffff;
             text-decoration: none;
             letter-spacing: -0.5px;
             transition: color 0.4s ease;
@@ -163,7 +163,7 @@
         }
 
         .nav-links a {
-            color: #1a1a1a;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 500;
             font-size: 15px;
@@ -179,12 +179,13 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #8B4513;
+            background: #ffffff;
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #8B4513;
+            color: #ffffff;
+            opacity: 0.9;
         }
 
         .nav-links a:hover::after {
@@ -318,7 +319,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            background: #611bf8;
+            background: #8B4513;
             color: #fff;
             border: none;
             padding: 14px 28px;
@@ -332,7 +333,7 @@
         }
 
         .minimal-btn:hover {
-            background: #4607d0;
+            background: #6d3410;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
@@ -704,71 +705,35 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+            .nav-links { display: none; }
+            .nav-toggle { display: flex; }
 
-            .nav-toggle {
-                display: flex;
-            }
+            .hero { height: 80vh; }
+            .hero-content { bottom: 2rem; left: 1rem; right: 1rem; max-width: none; }
+            .hero-description { font-size: 0.95rem; }
+            .hero-button { bottom: 2rem; right: 1rem; }
 
-            .hero-content {
-                bottom: 2rem;
-                left: 1rem;
-                right: 1rem;
-                max-width: none;
-            }
+            .products-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .product-image { height: 240px; }
 
-            .hero-button {
-                bottom: 2rem;
-                right: 2rem;
-            }
+            .heritage-content { grid-template-columns: 1fr; gap: 2rem; }
+            .heritage-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+            .stat-number { font-size: 2.2rem; }
 
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+            .process-grid { grid-template-columns: 1fr; }
 
-            .heritage-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 
-            .heritage-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .process-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-
-            .section {
-                padding: 4rem 0;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
+            .section { padding: 3rem 0; }
+            .container { padding: 0 1rem; }
         }
 
         @media (max-width: 480px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-description {
-                font-size: 0.9rem;
-            }
-
-            .minimal-btn {
-                padding: 10px 16px;
-                font-size: 13px;
-            }
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero { height: 70vh; }
+            .hero-description { font-size: 0.9rem; }
+            .minimal-btn { padding: 12px 18px; font-size: 13px; }
+            .product-image { height: 200px; }
         }
     </style>
 </head>
