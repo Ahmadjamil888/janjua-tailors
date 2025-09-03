@@ -5,230 +5,396 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account - Janjua Tailors</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            content: ["./src/**/*.{html,js}"],
-            theme: {
-                fontFamily: {
-                    sans: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"],
-                    title: ["Lato", "ui-sans-serif", "system-ui", "sans-serif"],
-                    body: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"]
-                },
-                extend: {
-                    colors: {
-                        neutral: {
-                            50: "#f7f7f7", 100: "#eeeeee", 200: "#e0e0e0", 300: "#cacaca",
-                            400: "#b1b1b1", 500: "#999999", 600: "#7f7f7f", 700: "#676767",
-                            800: "#545454", 900: "#464646", 950: "#282828"
-                        },
-                        primary: {
-                            50: "#f3f1ff", 100: "#e9e5ff", 200: "#d5cfff", 300: "#b7a9ff",
-                            400: "#9478ff", 500: "#7341ff", 600: "#631bff", 700: "#611bf8",
-                            800: "#4607d0", 900: "#3c08aa", 950: "#220174", DEFAULT: "#611bf8"
-                        }
-                    },
-                    borderRadius: {
-                        none: "0px", sm: "6px", DEFAULT: "12px", md: "18px", lg: "24px",
-                        xl: "36px", "2xl": "48px", "3xl": "72px", full: "9999px"
-                    }
-                }
-            },
-            plugins: []
-        }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/shared-styles.css') }}">
+    
     <style>
+        .main-content {
+            margin-top: 80px;
+            padding: 40px 0;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .sidebar-nav {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            padding-left: 2rem;
+        }
+
+        .nav-item i {
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .action-card {
+            text-align: center;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .action-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .action-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+
+        .action-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .recent-orders {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .order-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .order-info h4 {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .order-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .order-status {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .status-confirmed {
+            background: rgba(13, 110, 253, 0.2);
+            color: #0d6efd;
+            border: 1px solid rgba(13, 110, 253, 0.3);
+        }
+
+        .status-ready {
+            background: rgba(25, 135, 84, 0.2);
+            color: #198754;
+            border: 1px solid rgba(25, 135, 84, 0.3);
+        }
+
+        .logout-btn {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logout-btn button {
+            width: 100%;
+            background: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+
+        .logout-btn button:hover {
+            background: rgba(220, 53, 69, 0.3);
+            border-color: rgba(220, 53, 69, 0.5);
+        }
+
         @media (max-width: 768px) {
             .dashboard-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar-nav {
+                position: static;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .order-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
         }
     </style>
 </head>
-<body class="bg-neutral-50 font-body">
+<body>
     <!-- Navigation -->
-    <nav class="bg-white border-b border-neutral-200 fixed w-full top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-4">
-                    <span class="material-symbols-outlined text-neutral-600 cursor-pointer hover:text-neutral-900">menu</span>
-                    <span class="material-symbols-outlined text-neutral-600 cursor-pointer hover:text-neutral-900">shopping_cart</span>
-                </div>
-                
-                <a href="{{ url('/') }}" class="text-xl font-title font-bold text-neutral-900">Janjua Tailors</a>
-                
-                <div class="flex items-center space-x-4">
-                    <a href="{{ route('my-orders') }}" class="text-sm text-neutral-700 hover:text-neutral-900">My Orders</a>
-                    <a href="{{ route('dashboard') }}" class="text-sm text-neutral-700 hover:text-neutral-900">Account</a>
-                </div>
-            </div>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="{{ url('/') }}" class="nav-brand">Janjua Tailors</a>
+            
+            <ul class="nav-links">
+                <li><a href="{{ route('pages.heritage') }}">Heritage</a></li>
+                <li><a href="{{ route('pages.craftsmanship') }}">Craftsmanship</a></li>
+                <li><a href="{{ route('products.index') }}">Fabrics</a></li>
+                <li><a href="{{ route('custom-order.start') }}">Custom Order</a></li>
+                @auth
+                    <li><a href="{{ route('my-orders') }}">My Orders</a></li>
+                    <li><a href="{{ route('dashboard') }}">Account</a></li>
+                @else
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Sign Up</a></li>
+                @endauth
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+            <li><a href="{{ route('pages.heritage') }}">Heritage</a></li>
+            <li><a href="{{ route('pages.craftsmanship') }}">Craftsmanship</a></li>
+            <li><a href="{{ route('products.index') }}">Fabrics</a></li>
+            <li><a href="{{ route('custom-order.start') }}">Custom Order</a></li>
+            @auth
+                <li><a href="{{ route('my-orders') }}">My Orders</a></li>
+                <li><a href="{{ route('dashboard') }}">Account</a></li>
+            @else
+                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('register') }}">Sign Up</a></li>
+            @endauth
+        </ul>
+    </div>
+
     <!-- Main Content -->
-    <main class="pt-16 p-6">
-        <div class="max-w-7xl mx-auto">
+    <main class="main-content">
+        <div class="container">
             <!-- Header -->
-            <div class="bg-white rounded-lg border border-neutral-200 p-6 mb-6">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h1 class="text-3xl font-title font-bold text-neutral-900">Welcome back, {{ Auth::user()->name }}</h1>
-                        <p class="text-neutral-600 mt-1">Manage your orders, preferences, and account settings</p>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="text-right">
-                            <p class="text-sm font-medium text-neutral-900">{{ Auth::user()->name }}</p>
-                            <p class="text-xs text-neutral-600">Customer</p>
-                        </div>
-                        <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                            <span class="material-symbols-outlined text-primary-600">person</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-header">
+                <h1 class="section-title">Welcome back, {{ Auth::user()->name }}</h1>
+                <p class="section-subtitle">Manage your orders, preferences, and account settings with three generations of tailoring excellence</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <div class="dashboard-grid">
                 <!-- Sidebar -->
-                <div class="lg:col-span-1">
-                    <div class="bg-white rounded-lg border border-neutral-200 p-6">
-                        <nav class="space-y-2">
-                            <a href="{{ route('dashboard') }}" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg bg-primary-50 text-primary-700 border border-primary-200">
-                                <span class="material-symbols-outlined mr-3 text-lg">dashboard</span>
+                <div class="sidebar-nav card">
+                    <div class="card-content">
+                        <nav>
+                            <a href="{{ route('dashboard') }}" class="nav-item active">
+                                <i class="fas fa-tachometer-alt"></i>
                                 Dashboard
                             </a>
-                            <a href="{{ route('my-orders') }}" class="flex items-center px-4 py-3 text-sm font-medium text-neutral-700 rounded-lg hover:bg-neutral-100 transition-colors">
-                                <span class="material-symbols-outlined mr-3 text-lg">shopping_bag</span>
+                            <a href="{{ route('my-orders') }}" class="nav-item">
+                                <i class="fas fa-shopping-bag"></i>
                                 My Orders
                             </a>
-                            <a href="{{ route('profile.edit') }}" class="flex items-center px-4 py-3 text-sm font-medium text-neutral-700 rounded-lg hover:bg-neutral-100 transition-colors">
-                                <span class="material-symbols-outlined mr-3 text-lg">person</span>
+                            <a href="{{ route('profile.edit') }}" class="nav-item">
+                                <i class="fas fa-user"></i>
                                 Profile
                             </a>
-                            <a href="{{ route('custom-order.start') }}" class="flex items-center px-4 py-3 text-sm font-medium text-neutral-700 rounded-lg hover:bg-neutral-100 transition-colors">
-                                <span class="material-symbols-outlined mr-3 text-lg">add_circle</span>
+                            <a href="{{ route('custom-order.start') }}" class="nav-item">
+                                <i class="fas fa-plus-circle"></i>
                                 New Order
                             </a>
-                            <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-neutral-700 rounded-lg hover:bg-neutral-100 transition-colors">
-                                <span class="material-symbols-outlined mr-3 text-lg">favorite</span>
+                            <a href="#" class="nav-item">
+                                <i class="fas fa-heart"></i>
                                 Favorites
                             </a>
-                            <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-neutral-700 rounded-lg hover:bg-neutral-100 transition-colors">
-                                <span class="material-symbols-outlined mr-3 text-lg">settings</span>
+                            <a href="#" class="nav-item">
+                                <i class="fas fa-cog"></i>
                                 Settings
                             </a>
                         </nav>
 
-                        <form method="POST" action="{{ route('logout') }}" class="mt-6 pt-6 border-t border-neutral-200">
-                            @csrf
-                            <button type="submit" class="w-full flex items-center justify-center px-4 py-3 text-sm font-medium text-red-700 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
-                                <span class="material-symbols-outlined mr-2 text-lg">logout</span>
-                                Sign Out
-                            </button>
-                        </form>
+                        <div class="logout-btn">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn-secondary btn-rounded w-full">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Sign Out
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Main Panel -->
-                <div class="lg:col-span-3">
-                    <div class="bg-white rounded-lg border border-neutral-200 p-8">
-                        <div class="text-center mb-8">
-                            <h2 class="text-2xl font-title font-bold text-neutral-900 mb-4">Your Tailoring Journey</h2>
-                            <p class="text-neutral-600 max-w-2xl mx-auto">Experience the luxury and reliability that three generations of Janjua Tailors have perfected in Gujranwala.</p>
-                        </div>
-
-                        <!-- Quick Actions -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-neutral-50 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
-                                <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                    <span class="material-symbols-outlined text-primary-600 text-2xl">add_circle</span>
+                <div class="main-panel">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- Quick Actions -->
+                            <div class="quick-actions">
+                                <div class="action-card card">
+                                    <div class="card-content">
+                                        <div class="action-icon">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </div>
+                                        <h3 class="action-title">Start Custom Order</h3>
+                                        <p class="action-description">Create a new bespoke shalwar kameez tailored to your measurements</p>
+                                        <a href="{{ route('custom-order.start') }}" class="btn-primary btn-rounded">
+                                            Get Started
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                                <h3 class="text-lg font-title font-bold text-neutral-900 mb-2">Start Custom Order</h3>
-                                <p class="text-neutral-600 text-sm mb-4">Create a new bespoke shalwar kameez tailored to your measurements</p>
-                                <a href="{{ route('custom-order.start') }}" class="inline-flex items-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors">
-                                    Get Started
-                                    <span class="material-symbols-outlined ml-2 text-lg">arrow_forward</span>
-                                </a>
-                            </div>
 
-                            <div class="bg-neutral-50 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
-                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                    <span class="material-symbols-outlined text-green-600 text-2xl">shopping_bag</span>
+                                <div class="action-card card">
+                                    <div class="card-content">
+                                        <div class="action-icon">
+                                            <i class="fas fa-shopping-bag"></i>
+                                        </div>
+                                        <h3 class="action-title">View Orders</h3>
+                                        <p class="action-description">Track your current orders and view order history</p>
+                                        <a href="{{ route('my-orders') }}" class="btn-primary btn-rounded">
+                                            View Orders
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                                <h3 class="text-lg font-title font-bold text-neutral-900 mb-2">View Orders</h3>
-                                <p class="text-neutral-600 text-sm mb-4">Track your current orders and view order history</p>
-                                <a href="{{ route('my-orders') }}" class="inline-flex items-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors">
-                                    View Orders
-                                    <span class="material-symbols-outlined ml-2 text-lg">arrow_forward</span>
-                                </a>
-                            </div>
 
-                            <div class="bg-neutral-50 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
-                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                    <span class="material-symbols-outlined text-purple-600 text-2xl">palette</span>
+                                <div class="action-card card">
+                                    <div class="card-content">
+                                        <div class="action-icon">
+                                            <i class="fas fa-swatches"></i>
+                                        </div>
+                                        <h3 class="action-title">Browse Fabrics</h3>
+                                        <p class="action-description">Explore our premium fabric collection from top brands</p>
+                                        <a href="{{ route('products.index') }}" class="btn-primary btn-rounded">
+                                            Browse Fabrics
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                                <h3 class="text-lg font-title font-bold text-neutral-900 mb-2">Browse Fabrics</h3>
-                                <p class="text-neutral-600 text-sm mb-4">Explore our premium fabric collection from top brands</p>
-                                <a href="{{ route('products.index') }}" class="inline-flex items-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors">
-                                    Browse Fabrics
-                                    <span class="material-symbols-outlined ml-2 text-lg">arrow_forward</span>
-                                </a>
-                            </div>
 
-                            <div class="bg-neutral-50 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
-                                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                    <span class="material-symbols-outlined text-orange-600 text-2xl">edit</span>
+                                <div class="action-card card">
+                                    <div class="card-content">
+                                        <div class="action-icon">
+                                            <i class="fas fa-user-edit"></i>
+                                        </div>
+                                        <h3 class="action-title">Update Profile</h3>
+                                        <p class="action-description">Manage your account information and preferences</p>
+                                        <a href="{{ route('profile.edit') }}" class="btn-primary btn-rounded">
+                                            Edit Profile
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                                <h3 class="text-lg font-title font-bold text-neutral-900 mb-2">Update Profile</h3>
-                                <p class="text-neutral-600 text-sm mb-4">Manage your account information and preferences</p>
-                                <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors">
-                                    Edit Profile
-                                    <span class="material-symbols-outlined ml-2 text-lg">arrow_forward</span>
-                                </a>
                             </div>
-                        </div>
 
                         @php
                             $userOrders = \App\Models\CustomOrder::where('user_id', Auth::id())->latest()->take(3)->get();
                         @endphp
 
-                        @if($userOrders->count() > 0)
-                        <!-- Recent Orders -->
-                        <div class="mt-8 pt-8 border-t border-neutral-200">
-                            <h3 class="text-lg font-title font-bold text-neutral-900 mb-4">Recent Orders</h3>
-                            <div class="space-y-4">
-                                @foreach($userOrders as $order)
-                                <div class="flex items-center justify-between p-4 bg-neutral-50 rounded-lg">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
-                                            <span class="material-symbols-outlined text-primary-600">receipt</span>
+                            @if($userOrders->count() > 0)
+                            <!-- Recent Orders -->
+                            <div class="recent-orders">
+                                <h3 class="section-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Recent Orders</h3>
+                                <div>
+                                    @foreach($userOrders as $order)
+                                    <div class="order-item">
+                                        <div class="order-info">
+                                            <h4>{{ $order->order_number }}</h4>
+                                            <p>{{ $order->created_at->diffForHumans() }} • Rs. {{ number_format($order->total_amount) }}</p>
                                         </div>
                                         <div>
-                                            <h4 class="font-medium text-neutral-900">{{ $order->order_number }}</h4>
-                                            <p class="text-sm text-neutral-600">{{ $order->created_at->diffForHumans() }}</p>
+                                            <span class="order-status 
+                                                @if($order->status === 'pending') status-pending
+                                                @elseif($order->status === 'confirmed') status-confirmed
+                                                @elseif($order->status === 'ready') status-ready
+                                                @else status-pending
+                                                @endif">
+                                                {{ str_replace('_', ' ', ucfirst($order->status)) }}
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class="text-right">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                            @if($order->status === 'pending') bg-yellow-100 text-yellow-800
-                                            @elseif($order->status === 'confirmed') bg-blue-100 text-blue-800
-                                            @elseif($order->status === 'ready') bg-green-100 text-green-800
-                                            @else bg-neutral-100 text-neutral-800
-                                            @endif">
-                                            {{ str_replace('_', ' ', ucfirst($order->status)) }}
-                                        </span>
-                                        <p class="text-sm font-medium text-neutral-900 mt-1">Rs. {{ number_format($order->total_amount) }}</p>
-                                    </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
                             </div>
+                            @endif
                         </div>
-                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    <script src="{{ asset('js/shared-scripts.js') }}"></script>
 </body>
 </html>

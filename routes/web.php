@@ -146,6 +146,10 @@ Route::get('/test-login', function () {
 });
 
 // Static Pages
+Route::get('/about', function () { return view('pages.about'); })->name('pages.about');
+Route::get('/services', function () { return view('pages.services'); })->name('pages.services');
+Route::get('/contact', function () { return view('pages.contact'); })->name('pages.contact');
+Route::get('/gallery', function () { return view('pages.gallery'); })->name('pages.gallery');
 Route::get('/heritage', function () { return view('pages.heritage'); })->name('pages.heritage');
 Route::get('/craftsmanship', function () { return view('pages.craftsmanship'); })->name('pages.craftsmanship');
 Route::get('/innovation', function () { return view('pages.innovation'); })->name('pages.innovation');
@@ -153,7 +157,6 @@ Route::get('/quality', function () { return view('pages.quality'); })->name('pag
 Route::get('/delivery', function () { return view('pages.delivery'); })->name('pages.delivery');
 Route::get('/alterations', function () { return view('pages.alterations'); })->name('pages.alterations');
 Route::get('/testimonials', function () { return view('pages.testimonials'); })->name('pages.testimonials');
-Route::get('/contact', function () { return view('pages.contact'); })->name('pages.contact');
 Route::get('/size-guide', function () { return view('pages.size-guide'); })->name('pages.size-guide');
 Route::get('/faq', function () { return view('pages.faq'); })->name('pages.faq');
 Route::get('/care', function () { return view('pages.care'); })->name('pages.care');

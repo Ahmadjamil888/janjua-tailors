@@ -7,39 +7,17 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/shared-styles.css') }}">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #fff;
-            background: #000;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
-            z-index: -1;
         }
 
         .auth-container {
@@ -48,23 +26,6 @@
             max-width: 1200px;
             width: 100%;
             min-height: 100vh;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .auth-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="auth-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="0.4" fill="rgba(255,255,255,0.04)"/><circle cx="70" cy="70" r="0.4" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23auth-grain)"/></svg>');
-            opacity: 0.3;
-            z-index: 0;
         }
 
         .auth-image {
@@ -77,7 +38,6 @@
             text-align: center;
             padding: 60px 40px;
             position: relative;
-            z-index: 2;
         }
 
         .auth-image h1 {
@@ -102,12 +62,33 @@
             flex-direction: column;
             justify-content: center;
             position: relative;
-            z-index: 2;
+        }
+
+        .auth-form {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="form-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="0.4" fill="rgba(255,255,255,0.04)"/><circle cx="70" cy="70" r="0.4" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23form-grain)"/></svg>');
+            opacity: 0.3;
+            z-index: 0;
         }
 
         .form-header {
             text-align: center;
             margin-bottom: 48px;
+            position: relative;
+            z-index: 2;
         }
 
         .form-header h2 {
@@ -127,38 +108,8 @@
 
         .form-group {
             margin-bottom: 24px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 16px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 0;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            backdrop-filter: blur(10px);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.4);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 2;
         }
 
         .form-checkbox {
@@ -193,6 +144,8 @@
             backdrop-filter: blur(10px);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
         }
 
         .form-button:hover {
@@ -203,6 +156,8 @@
 
         .form-links {
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .form-links a {
@@ -221,6 +176,8 @@
             text-align: center;
             color: rgba(255, 255, 255, 0.6);
             font-size: 14px;
+            position: relative;
+            z-index: 2;
         }
 
         .form-divider a {
@@ -252,26 +209,7 @@
             position: absolute;
             top: 24px;
             left: 24px;
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
             z-index: 10;
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-        }
-
-        .back-link:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {
@@ -298,7 +236,7 @@
     </style>
 </head>
 <body>
-    <a href="{{ url('/') }}" class="back-link">
+    <a href="{{ url('/') }}" class="back-link btn-secondary btn-rounded">
         <i class="fas fa-arrow-left"></i>
         Back to Home
     </a>
@@ -359,5 +297,6 @@
             </form>
         </div>
     </div>
+    <script src="{{ asset('js/shared-scripts.js') }}"></script>
 </body>
 </html>

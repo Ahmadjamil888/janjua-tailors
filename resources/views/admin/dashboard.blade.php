@@ -4,45 +4,263 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Janjua Tailors</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            content: ["./src/**/*.{html,js}"],
-            theme: {
-                fontFamily: {
-                    sans: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"],
-                    title: ["Lato", "ui-sans-serif", "system-ui", "sans-serif"],
-                    body: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"]
-                },
-                extend: {
-                    colors: {
-                        neutral: {
-                            50: "#f7f7f7", 100: "#eeeeee", 200: "#e0e0e0", 300: "#cacaca",
-                            400: "#b1b1b1", 500: "#999999", 600: "#7f7f7f", 700: "#676767",
-                            800: "#545454", 900: "#464646", 950: "#282828"
-                        },
-                        primary: {
-                            50: "#f3f1ff", 100: "#e9e5ff", 200: "#d5cfff", 300: "#b7a9ff",
-                            400: "#9478ff", 500: "#7341ff", 600: "#631bff", 700: "#611bf8",
-                            800: "#4607d0", 900: "#3c08aa", 950: "#220174", DEFAULT: "#611bf8"
-                        }
-                    },
-                    borderRadius: {
-                        none: "0px", sm: "6px", DEFAULT: "12px", md: "18px", lg: "24px",
-                        xl: "36px", "2xl": "48px", "3xl": "72px", full: "9999px"
-                    }
-                }
-            },
-            plugins: []
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .sidebar-transition {
-            transition: transform 0.3s ease;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            z-index: 1000;
+        }
+
+        .sidebar .logo {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .sidebar .logo h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 15px 25px;
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: #34495e;
+            color: white;
+        }
+
+        .sidebar-menu i {
+            margin-right: 15px;
+            width: 20px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .stat-card.orders .stat-icon { color: #3498db; }
+        .stat-card.pending .stat-icon { color: #f39c12; }
+        .stat-card.completed .stat-icon { color: #27ae60; }
+        .stat-card.customers .stat-icon { color: #9b59b6; }
+        .stat-card.products .stat-icon { color: #e74c3c; }
+        .stat-card.revenue .stat-icon { color: #16a085; }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid #ecf0f1;
+            background: #f8f9fa;
+        }
+
+        .card-header h3 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .recent-orders {
+            list-style: none;
+        }
+
+        .recent-orders li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .recent-orders li:last-child {
+            border-bottom: none;
+        }
+
+        .order-info h4 {
+            color: #2c3e50;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .order-info p {
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+
+        .order-status {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-confirmed { background: #d1ecf1; color: #0c5460; }
+        .status-cutting { background: #ffeaa7; color: #6c5ce7; }
+        .status-stitching { background: #fd79a8; color: #2d3436; }
+        .status-ready { background: #d4edda; color: #155724; }
+
+        .status-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-bar {
+            flex: 1;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            margin: 0 15px;
+            overflow: hidden;
+        }
+
+        .status-progress {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -51,235 +269,139 @@
             .main-content {
                 margin-left: 0;
             }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body class="bg-neutral-50 font-body">
-    <!-- Sidebar -->
-    <div class="fixed left-0 top-0 w-64 h-full bg-white border-r border-neutral-200 z-50 sidebar-transition">
-        <div class="p-6 border-b border-neutral-200">
-            <h2 class="text-xl font-title font-bold text-neutral-900">Janjua Tailors</h2>
-            <p class="text-sm text-neutral-600">Admin Panel</p>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <h2>Janjua Tailors</h2>
+            <p>Admin Panel</p>
         </div>
-        
-        <nav class="p-4">
-            <ul class="space-y-2">
-                <li>
-                    <a href="{{ route('admin.dashboard') }}" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg bg-primary-50 text-primary-700 border border-primary-200">
-                        <span class="material-symbols-outlined mr-3 text-lg">dashboard</span>
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.orders') }}" class="flex items-center px-4 py-3 text-sm font-medium text-neutral-700 rounded-lg hover:bg-neutral-100 transition-colors">
-                        <span class="material-symbols-outlined mr-3 text-lg">shopping_bag</span>
-                        Orders
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.products.index') }}" class="flex items-center px-4 py-3 text-sm font-medium text-neutral-700 rounded-lg hover:bg-neutral-100 transition-colors">
-                        <span class="material-symbols-outlined mr-3 text-lg">inventory_2</span>
-                        Products
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.customers.index') }}" class="flex items-center px-4 py-3 text-sm font-medium text-neutral-700 rounded-lg hover:bg-neutral-100 transition-colors">
-                        <span class="material-symbols-outlined mr-3 text-lg">group</span>
-                        Customers
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('/') }}" class="flex items-center px-4 py-3 text-sm font-medium text-neutral-700 rounded-lg hover:bg-neutral-100 transition-colors">
-                        <span class="material-symbols-outlined mr-3 text-lg">public</span>
-                        View Website
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('dashboard') }}" class="flex items-center px-4 py-3 text-sm font-medium text-neutral-700 rounded-lg hover:bg-neutral-100 transition-colors">
-                        <span class="material-symbols-outlined mr-3 text-lg">account_circle</span>
-                        My Account
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <ul class="sidebar-menu">
+            <li><a href="{{ route('admin.dashboard') }}" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="{{ route('admin.orders') }}"><i class="fas fa-shopping-bag"></i> Orders</a></li>
+            <li><a href="{{ route('admin.products.index') }}"><i class="fas fa-box"></i> Products</a></li>
+            <li><a href="{{ route('admin.customers.index') }}"><i class="fas fa-users"></i> Customers</a></li>
+            <li><a href="{{ url('/') }}"><i class="fas fa-globe"></i> View Website</a></li>
+            <li><a href="{{ route('dashboard') }}"><i class="fas fa-user"></i> My Account</a></li>
+        </ul>
     </div>
 
-    <!-- Main Content -->
-    <div class="ml-64 p-6">
-        <!-- Header -->
-        <div class="bg-white rounded-lg border border-neutral-200 p-6 mb-6">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h1 class="text-2xl font-title font-bold text-neutral-900">Dashboard</h1>
-                    <p class="text-neutral-600 mt-1">Welcome back, {{ auth()->user()->name }}</p>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <div class="text-right">
-                        <p class="text-sm font-medium text-neutral-900">{{ auth()->user()->name }}</p>
-                        <p class="text-xs text-neutral-600">Administrator</p>
-                    </div>
-                    <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                        <span class="material-symbols-outlined text-primary-600">person</span>
-                    </div>
-                </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>Dashboard</h1>
+            <div class="user-info">
+                <span>Welcome, {{ auth()->user()->name }}</span>
+                <i class="fas fa-user-circle" style="font-size: 1.5rem; color: #7f8c8d;"></i>
             </div>
         </div>
 
-        <!-- Stats Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-            <div class="bg-white rounded-lg border border-neutral-200 p-6 hover:shadow-lg transition-shadow">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-neutral-600">Total Orders</p>
-                        <p class="text-3xl font-bold text-neutral-900 mt-2">{{ $stats['total_orders'] }}</p>
-                    </div>
-                    <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined text-primary-600 text-2xl">shopping_bag</span>
-                    </div>
+        <div class="stats-grid">
+            <div class="stat-card orders">
+                <div class="stat-icon">
+                    <i class="fas fa-shopping-bag"></i>
                 </div>
+                <div class="stat-number">{{ $stats['total_orders'] }}</div>
+                <div class="stat-label">Total Orders</div>
             </div>
 
-            <div class="bg-white rounded-lg border border-neutral-200 p-6 hover:shadow-lg transition-shadow">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-neutral-600">Pending Orders</p>
-                        <p class="text-3xl font-bold text-neutral-900 mt-2">{{ $stats['pending_orders'] }}</p>
-                    </div>
-                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined text-yellow-600 text-2xl">schedule</span>
-                    </div>
+            <div class="stat-card pending">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
                 </div>
+                <div class="stat-number">{{ $stats['pending_orders'] }}</div>
+                <div class="stat-label">Pending Orders</div>
             </div>
 
-            <div class="bg-white rounded-lg border border-neutral-200 p-6 hover:shadow-lg transition-shadow">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-neutral-600">Completed Orders</p>
-                        <p class="text-3xl font-bold text-neutral-900 mt-2">{{ $stats['completed_orders'] }}</p>
-                    </div>
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined text-green-600 text-2xl">check_circle</span>
-                    </div>
+            <div class="stat-card completed">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
                 </div>
+                <div class="stat-number">{{ $stats['completed_orders'] }}</div>
+                <div class="stat-label">Completed Orders</div>
             </div>
 
-            <div class="bg-white rounded-lg border border-neutral-200 p-6 hover:shadow-lg transition-shadow">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-neutral-600">Total Customers</p>
-                        <p class="text-3xl font-bold text-neutral-900 mt-2">{{ $stats['total_customers'] }}</p>
-                    </div>
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined text-purple-600 text-2xl">group</span>
-                    </div>
+            <div class="stat-card customers">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
                 </div>
+                <div class="stat-number">{{ $stats['total_customers'] }}</div>
+                <div class="stat-label">Total Customers</div>
             </div>
 
-            <div class="bg-white rounded-lg border border-neutral-200 p-6 hover:shadow-lg transition-shadow">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-neutral-600">Total Products</p>
-                        <p class="text-3xl font-bold text-neutral-900 mt-2">{{ $stats['total_products'] }}</p>
-                    </div>
-                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined text-red-600 text-2xl">inventory_2</span>
-                    </div>
+            <div class="stat-card products">
+                <div class="stat-icon">
+                    <i class="fas fa-box"></i>
                 </div>
+                <div class="stat-number">{{ $stats['total_products'] }}</div>
+                <div class="stat-label">Total Products</div>
             </div>
 
-            <div class="bg-white rounded-lg border border-neutral-200 p-6 hover:shadow-lg transition-shadow">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-neutral-600">Monthly Revenue</p>
-                        <p class="text-3xl font-bold text-neutral-900 mt-2">Rs. {{ number_format($stats['revenue_this_month']) }}</p>
-                    </div>
-                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined text-teal-600 text-2xl">payments</span>
-                    </div>
+            <div class="stat-card revenue">
+                <div class="stat-icon">
+                    <i class="fas fa-dollar-sign"></i>
                 </div>
+                <div class="stat-number">{{ number_format($stats['revenue_this_month']) }}</div>
+                <div class="stat-label">Monthly Revenue</div>
             </div>
         </div>
 
-        <!-- Dashboard Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Recent Orders -->
-            <div class="lg:col-span-2 bg-white rounded-lg border border-neutral-200">
-                <div class="p-6 border-b border-neutral-200">
-                    <h3 class="text-lg font-title font-bold text-neutral-900">Recent Orders</h3>
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Recent Orders</h3>
                 </div>
-                <div class="p-6">
+                <div class="card-body">
                     @if($recent_orders->count() > 0)
-                        <div class="space-y-4">
+                        <ul class="recent-orders">
                             @foreach($recent_orders as $order)
-                            <div class="flex items-center justify-between p-4 bg-neutral-50 rounded-lg">
-                                <div class="flex items-center space-x-4">
-                                    <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
-                                        <span class="material-symbols-outlined text-primary-600">receipt</span>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-medium text-neutral-900">{{ $order->order_number }}</h4>
-                                        <p class="text-sm text-neutral-600">{{ $order->user->name }} • {{ $order->created_at->diffForHumans() }}</p>
-                                    </div>
+                            <li>
+                                <div class="order-info">
+                                    <h4>{{ $order->order_number }}</h4>
+                                    <p>{{ $order->user->name }} • {{ $order->created_at->diffForHumans() }}</p>
                                 </div>
-                                <div class="text-right">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                        @if($order->status === 'pending') bg-yellow-100 text-yellow-800
-                                        @elseif($order->status === 'confirmed') bg-blue-100 text-blue-800
-                                        @elseif($order->status === 'ready') bg-green-100 text-green-800
-                                        @else bg-neutral-100 text-neutral-800
-                                        @endif">
-                                        {{ str_replace('_', ' ', ucfirst($order->status)) }}
-                                    </span>
-                                    <p class="text-sm font-medium text-neutral-900 mt-1">Rs. {{ number_format($order->total_amount) }}</p>
+                                <div>
+                                    <div class="order-status status-{{ $order->status }}">
+                                        {{ str_replace('_', ' ', $order->status) }}
+                                    </div>
+                                    <p style="margin-top: 5px; font-size: 12px; color: #27ae60; font-weight: 600;">
+                                        Rs. {{ number_format($order->total_amount) }}
+                                    </p>
                                 </div>
-                            </div>
+                            </li>
                             @endforeach
-                        </div>
-                        <div class="mt-6 text-center">
-                            <a href="{{ route('admin.orders') }}" class="inline-flex items-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors">
-                                View All Orders
-                                <span class="material-symbols-outlined ml-2 text-lg">arrow_forward</span>
-                            </a>
+                        </ul>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <a href="{{ route('admin.orders') }}" class="btn btn-primary">View All Orders</a>
                         </div>
                     @else
-                        <div class="text-center py-12">
-                            <span class="material-symbols-outlined text-6xl text-neutral-300 mb-4">shopping_bag</span>
-                            <p class="text-neutral-600">No orders yet</p>
-                        </div>
+                        <p style="text-align: center; color: #7f8c8d; padding: 40px;">No orders yet</p>
                     @endif
                 </div>
             </div>
 
-            <!-- Order Status Distribution -->
-            <div class="bg-white rounded-lg border border-neutral-200">
-                <div class="p-6 border-b border-neutral-200">
-                    <h3 class="text-lg font-title font-bold text-neutral-900">Order Status</h3>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Order Status Distribution</h3>
                 </div>
-                <div class="p-6">
-                    <div class="space-y-4">
+                <div class="card-body">
+                    <div class="status-chart">
                         @foreach($status_distribution as $status)
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-3 h-3 rounded-full 
-                                    @if($status->status === 'pending') bg-yellow-400
-                                    @elseif($status->status === 'confirmed') bg-blue-400
-                                    @elseif($status->status === 'ready') bg-green-400
-                                    @else bg-neutral-400
-                                    @endif"></div>
-                                <span class="text-sm font-medium text-neutral-700">{{ str_replace('_', ' ', ucfirst($status->status)) }}</span>
+                        <div class="status-item">
+                            <span style="font-size: 12px; color: #2c3e50; font-weight: 500;">
+                                {{ str_replace('_', ' ', ucfirst($status->status)) }}
+                            </span>
+                            <div class="status-bar">
+                                <div class="status-progress" 
+                                     style="width: {{ ($status->count / $stats['total_orders']) * 100 }}%; 
+                                            background: {{ $status->status === 'delivered' ? '#27ae60' : ($status->status === 'pending' ? '#f39c12' : '#3498db') }};"></div>
                             </div>
-                            <div class="flex items-center space-x-2">
-                                <div class="w-20 h-2 bg-neutral-200 rounded-full overflow-hidden">
-                                    <div class="h-full rounded-full transition-all duration-300
-                                        @if($status->status === 'pending') bg-yellow-400
-                                        @elseif($status->status === 'confirmed') bg-blue-400
-                                        @elseif($status->status === 'ready') bg-green-400
-                                        @else bg-neutral-400
-                                        @endif" 
-                                        style="width: {{ $stats['total_orders'] > 0 ? ($status->count / $stats['total_orders']) * 100 : 0 }}%"></div>
-                                </div>
-                                <span class="text-sm font-medium text-neutral-900">{{ $status->count }}</span>
-                            </div>
+                            <span style="font-size: 12px; color: #7f8c8d;">{{ $status->count }}</span>
                         </div>
                         @endforeach
                     </div>

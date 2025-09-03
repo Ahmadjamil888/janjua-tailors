@@ -8,163 +8,21 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/jt-logo.svg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/shared-styles.css') }}">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #fff;
-            background: #000;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 60px;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-            padding: 0 24px;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .nav-menu-icon,
-        .nav-cart-icon {
-            font-size: 20px;
-            color: #fff;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-menu-icon:hover,
-        .nav-cart-icon:hover {
-            opacity: 0.7;
-        }
-
-        .nav-brand {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-weight: 600;
-            color: #fff;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .nav-auth-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-auth-links a {
-            font-family: 'Inter', sans-serif;
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 400;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-auth-links a:hover {
-            opacity: 0.7;
-        }
 
         /* Main Content */
         .main-content {
-            margin-top: 60px;
+            margin-top: 80px;
             padding: 60px 0;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
         }
 
         /* Hero Section */
         .hero-section {
-            background: #000;
-            color: white;
             padding: 80px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hero-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23hero-grain)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
         }
 
         /* Layout */
@@ -177,28 +35,10 @@
 
         /* Sidebar Filters */
         .filters-sidebar {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0;
             padding: 2.5rem;
-            backdrop-filter: blur(20px);
             height: fit-content;
             position: sticky;
-            top: 80px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .filters-sidebar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="filter-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23filter-grain)"/></svg>');
-            opacity: 0.3;
-            z-index: -1;
+            top: 100px;
         }
 
         .filters-title {
@@ -416,25 +256,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 1.5rem 2rem;
-            border-radius: 0;
-            backdrop-filter: blur(20px);
             position: relative;
-            overflow: hidden;
-        }
-
-        .products-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="header-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.4" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23header-grain)"/></svg>');
-            opacity: 0.3;
-            z-index: 0;
         }
 
         .products-count {
@@ -540,33 +363,15 @@
 
         /* Premium Product Cards */
         .product-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0;
             overflow: hidden;
             transition: all 0.4s ease;
             position: relative;
             cursor: pointer;
-            backdrop-filter: blur(10px);
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="card-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.3" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23card-grain)"/></svg>');
-            opacity: 0.5;
-            z-index: 0;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.08);
         }
 
         .product-image {
@@ -919,36 +724,58 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="nav-left">
-                <i class="fas fa-bars nav-menu-icon" id="menuToggle"></i>
-                <i class="fas fa-shopping-cart nav-cart-icon"></i>
-            </div>
-            
             <a href="{{ url('/') }}" class="nav-brand">Janjua Tailors</a>
             
-            <div class="nav-right">
-                <div class="nav-auth-links">
-                    @auth
-                        <a href="{{ route('my-orders') }}">My Orders</a>
-                        <a href="{{ route('dashboard') }}">Account</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Sign Up</a>
-                    @endauth
-                </div>
-            </div>
+            <ul class="nav-links">
+                <li><a href="{{ route('pages.heritage') }}">Heritage</a></li>
+                <li><a href="{{ route('pages.craftsmanship') }}">Craftsmanship</a></li>
+                <li><a href="{{ route('products.index') }}">Fabrics</a></li>
+                <li><a href="{{ route('custom-order.start') }}">Custom Order</a></li>
+                @auth
+                    <li><a href="{{ route('my-orders') }}">My Orders</a></li>
+                    <li><a href="{{ route('dashboard') }}">Account</a></li>
+                @else
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Sign Up</a></li>
+                @endauth
+            </ul>
+            
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+            <li><a href="{{ route('pages.heritage') }}">Heritage</a></li>
+            <li><a href="{{ route('pages.craftsmanship') }}">Craftsmanship</a></li>
+            <li><a href="{{ route('products.index') }}">Fabrics</a></li>
+            <li><a href="{{ route('custom-order.start') }}">Custom Order</a></li>
+            @auth
+                <li><a href="{{ route('my-orders') }}">My Orders</a></li>
+                <li><a href="{{ route('dashboard') }}">Account</a></li>
+            @else
+                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('register') }}">Sign Up</a></li>
+            @endauth
+        </ul>
+    </div>
 
     <!-- Main Content -->
     <main class="main-content">
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="container">
-                <h1 class="hero-title">Premium Fabrics</h1>
-                <p class="hero-subtitle">Discover our curated collection of luxury fabrics from renowned brands, each piece selected for its exceptional quality and craftsmanship.</p>
+                <div class="section-header">
+                    <h1 class="section-title">Premium Fabrics</h1>
+                    <p class="section-subtitle">Discover our curated collection of luxury fabrics from renowned brands, each piece selected for its exceptional quality and craftsmanship.</p>
+                </div>
             </div>
         </section>
 
@@ -962,14 +789,15 @@
 
             <div class="products-layout">
                 <!-- Sidebar Filters -->
-                <aside class="filters-sidebar" id="filtersSidebar">
-                    <button class="filters-close" id="filtersClose" style="display: none;">
-                        <i class="fas fa-times"></i>
-                    </button>
-                    <h3 class="filters-title">
-                        <i class="fas fa-filter"></i>
-                        Filters
-                    </h3>
+                <aside class="filters-sidebar card" id="filtersSidebar">
+                    <div class="card-content">
+                        <button class="filters-close" id="filtersClose" style="display: none;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <h3 class="filters-title">
+                            <i class="fas fa-filter"></i>
+                            Filters
+                        </h3>
 
                     <!-- Brand Filter -->
                     <div class="filter-group">
@@ -1125,7 +953,7 @@
 
                     <div class="products-grid" id="productsGrid">
                     @forelse($products as $product)
-                        <div class="product-card" data-brand="{{ strtolower($product->brand ?? '') }}" data-price="{{ $product->price }}" data-type="{{ strtolower($product->fabric_type ?? 'cotton') }}">
+                        <div class="product-card card" data-brand="{{ strtolower($product->brand ?? '') }}" data-price="{{ $product->price }}" data-type="{{ strtolower($product->fabric_type ?? 'cotton') }}">
                             <div class="product-image">
                                 @if($product->image)
                                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" loading="lazy">
@@ -1379,5 +1207,6 @@
             // Add mobile menu functionality here
         });
     </script>
+    <script src="{{ asset('js/shared-scripts.js') }}"></script>
 </body>
 </html>

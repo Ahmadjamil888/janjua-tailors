@@ -3,13 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Janjua Tailors - Three Generations of Excellence | Gujranwala</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Janjua Tailors - Best Custom Tailor in Gujranwala | Bespoke Shalwar Kameez | Three Generations of Excellence</title>
+    <meta name="description" content="Janjua Tailors - Premier custom tailoring in Gujranwala since 1980s. Three generations of master tailors crafting bespoke shalwar kameez, suits & formal wear. Expert alterations, premium fabrics, perfect fit guaranteed.">
+    <meta name="keywords" content="tailor Gujranwala, custom tailor, bespoke tailoring, shalwar kameez, suit tailoring, master tailor, clothing alterations, premium fabrics, custom suits, traditional tailoring, Pakistani tailor, best tailor Gujranwala, Janjua Tailors">
+    <meta name="author" content="Janjua Tailors">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url('/') }}">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Janjua Tailors - Best Custom Tailor in Gujranwala | Three Generations of Excellence">
+    <meta property="og:description" content="Premier custom tailoring in Gujranwala since 1980s. Master tailors crafting bespoke shalwar kameez, suits & formal wear with perfect fit guaranteed.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:image" content="{{ asset('images/janjua-tailors-og.jpg') }}">
+    <meta property="og:site_name" content="Janjua Tailors">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Janjua Tailors - Best Custom Tailor in Gujranwala">
+    <meta name="twitter:description" content="Three generations of master tailors crafting bespoke clothing with premium fabrics and perfect fit.">
+    <meta name="twitter:image" content="{{ asset('images/janjua-tailors-twitter.jpg') }}">
+    
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Janjua Tailors",
+        "description": "Premier custom tailoring service in Gujranwala offering bespoke shalwar kameez, suits, and formal wear with three generations of expertise.",
+        "url": "{{ url('/') }}",
+        "telephone": "+92-300-1234567",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Main Bazaar",
+            "addressLocality": "Gujranwala",
+            "addressRegion": "Punjab",
+            "postalCode": "52250",
+            "addressCountry": "PK"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 32.1877,
+            "longitude": 74.1945
+        },
+        "openingHours": "Mo-Sa 09:00-20:00",
+        "priceRange": "$$",
+        "image": "{{ asset('images/janjua-tailors-logo.jpg') }}",
+        "sameAs": [
+            "https://www.facebook.com/janjuatailors",
+            "https://www.instagram.com/janjuatailors"
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "150"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Tailoring Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Shalwar Kameez",
+                        "description": "Bespoke traditional Pakistani formal wear"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Suits",
+                        "description": "Tailored business and formal suits"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Alterations",
+                        "description": "Professional clothing alterations and adjustments"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
     
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/jt-logo.svg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -20,7 +108,7 @@
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #111;
             background: #fff;
@@ -33,15 +121,16 @@
             top: 0;
             width: 100%;
             height: 80px;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             z-index: 1000;
             transition: all 0.4s ease;
         }
 
         .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid #eee;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -55,17 +144,17 @@
         }
 
         .nav-brand {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: 28px;
-            font-weight: 700;
-            color: #fff;
+            font-weight: 600;
+            color: #1a1a1a;
             text-decoration: none;
             letter-spacing: -0.5px;
             transition: color 0.4s ease;
         }
 
-        .navbar.scrolled .nav-brand {
-            color: #111;
+        .nav-brand:hover {
+            color: #8B4513;
         }
 
         .nav-links {
@@ -75,27 +164,28 @@
         }
 
         .nav-links a {
-            color: #fff;
+            color: #1a1a1a;
             text-decoration: none;
-            font-weight: 400;
+            font-weight: 500;
             font-size: 15px;
             transition: all 0.4s ease;
             position: relative;
-        }
-
-        .navbar.scrolled .nav-links a {
-            color: #111;
+            padding: 0.5rem 0;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: currentColor;
+            background: #8B4513;
             transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #8B4513;
         }
 
         .nav-links a:hover::after {
@@ -111,13 +201,9 @@
         .nav-toggle span {
             width: 25px;
             height: 2px;
-            background: #fff;
+            background: #1a1a1a;
             margin: 3px 0;
             transition: 0.3s;
-        }
-
-        .navbar.scrolled .nav-toggle span {
-            background: #111;
         }
 
         /* Hero Section */
@@ -176,44 +262,54 @@
         .minimal-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: transparent;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.15);
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 12px 20px;
-            border-radius: 50px;
+            padding: 14px 28px;
+            border-radius: 0;
             text-decoration: none;
             font-size: 14px;
-            font-weight: 400;
-            transition: all 0.3s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
         }
 
         .minimal-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.6);
-            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         .minimal-btn i {
-            font-size: 12px;
+            font-size: 14px;
             transition: transform 0.3s ease;
         }
 
         .minimal-btn:hover i {
-            transform: translateX(3px);
+            transform: translateX(4px);
         }
 
         /* Section Styles */
         .section {
-            padding: 6rem 0;
+            padding: 8rem 0;
             position: relative;
-            background: #f7f7f7;
-            color: #464646;
+            background: #fff;
+            color: #1a1a1a;
             overflow: hidden;
         }
 
         .section.alt {
-            background: #eeeeee;
+            background: #f8f8f8;
+        }
+
+        .section.premium {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         .container {
@@ -631,26 +727,44 @@
             <a href="{{ url('/') }}" class="nav-brand">Janjua Tailors</a>
             
             <ul class="nav-links">
-                <li><a href="{{ route('pages.heritage') }}">Heritage</a></li>
-                <li><a href="{{ route('pages.craftsmanship') }}">Craftsmanship</a></li>
+                <li><a href="{{ route('pages.about') }}">About</a></li>
+                <li><a href="{{ route('pages.services') }}">Services</a></li>
                 <li><a href="{{ route('products.index') }}">Fabrics</a></li>
+                <li><a href="{{ route('pages.gallery') }}">Gallery</a></li>
+                <li><a href="{{ route('pages.contact') }}">Contact</a></li>
                 <li><a href="{{ route('custom-order.start') }}">Custom Order</a></li>
                 @auth
                     <li><a href="{{ route('my-orders') }}">My Orders</a></li>
                     <li><a href="{{ route('dashboard') }}">Account</a></li>
                 @else
                     <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Sign Up</a></li>
                 @endauth
             </ul>
             
-            <div class="nav-toggle" id="navToggle">
+            <button class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+            <li><a href="{{ route('pages.heritage') }}">Heritage</a></li>
+            <li><a href="{{ route('pages.craftsmanship') }}">Craftsmanship</a></li>
+            <li><a href="{{ route('products.index') }}">Fabrics</a></li>
+            <li><a href="{{ route('custom-order.start') }}">Custom Order</a></li>
+            @auth
+                <li><a href="{{ route('my-orders') }}">My Orders</a></li>
+                <li><a href="{{ route('dashboard') }}">Account</a></li>
+            @else
+                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('register') }}">Sign Up</a></li>
+            @endauth
+        </ul>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -847,30 +961,29 @@
         </div>
     </footer>
 
+    <script src="{{ asset('js/shared-scripts.js') }}"></script>
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // Additional animations for welcome page
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        // Mobile menu toggle
-        document.getElementById('navToggle').addEventListener('click', function() {
-            // Add mobile menu functionality here if needed
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
             });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.product-card, .process-item, .heritage-stats > div').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
