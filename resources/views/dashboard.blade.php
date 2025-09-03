@@ -190,7 +190,7 @@
                         </div>
 
                         @php
-                            $userOrders = \App\Models\Order::where('user_id', Auth::id())->latest()->take(3)->get();
+                            $userOrders = \App\Models\CustomOrder::where('user_id', Auth::id())->latest()->take(3)->get();
                         @endphp
 
                         @if($userOrders->count() > 0)

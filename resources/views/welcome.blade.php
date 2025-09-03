@@ -679,7 +679,7 @@
             
             <div class="products-grid">
                 @php
-                    $products = \App\Models\Product::where('status', 'active')->take(6)->get();
+                    $products = \App\Models\Product::active()->take(6)->get();
                 @endphp
                 
                 @forelse($products as $product)
