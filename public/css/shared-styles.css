@@ -1,3 +1,13 @@
+:root {
+    --brand-brown: #8B4513;
+    --brand-brown-dark: #6d3410;
+    --text-heading: #1a1a1a;
+    --text-body: #444;
+    --text-muted: #666;
+    --surface: #ffffff;
+    --surface-alt: #fafafa;
+    --border: #eaeaea;
+}
 /* Shared Styles for Janjua Tailors */
 
 * {
@@ -9,8 +19,8 @@
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #1a1a1a;
-    background: #fff;
+    color: var(--text-body);
+    background: var(--surface);
     overflow-x: hidden;
 }
 
@@ -77,9 +87,7 @@ body {
     transition: color 0.4s ease;
 }
 
-.nav-brand:hover {
-    color: #8B4513;
-}
+.nav-brand:hover { opacity: 0.9; }
 
 .nav-links {
     display: flex;
@@ -109,14 +117,10 @@ body {
 }
 
 .nav-links a:hover,
-.nav-links a.active {
-    color: #8B4513;
-}
+.nav-links a.active { opacity: 0.85; }
 
 .nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
-}
+.nav-links a.active::after { width: 100%; }
 
 .nav-toggle {
     display: none;
@@ -213,13 +217,13 @@ body {
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #1a1a1a;
+    color: var(--text-heading);
     letter-spacing: -0.5px;
 }
 
 .section-subtitle {
-    font-size: 1.1rem;
-    color: #666;
+    font-size: 1.05rem;
+    color: var(--text-muted);
     max-width: 600px;
     margin: 0 auto;
     font-weight: 400;
@@ -296,7 +300,7 @@ body {
 .value-icon {
     width: 80px;
     height: 80px;
-    background: #8B4513;
+    background: var(--brand-brown);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -368,7 +372,7 @@ body {
 }
 
 .member-role {
-    color: #8B4513;
+    color: var(--brand-brown);
     font-weight: 500;
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -393,11 +397,11 @@ body {
     padding: 2rem 1rem;
 }
 
-.stat-number {
+    .stat-number {
     font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
     font-weight: 700;
-    color: #8B4513;
+    color: var(--brand-brown);
     display: block;
     margin-bottom: 0.5rem;
 }
@@ -428,7 +432,7 @@ body {
 }
 
 .service-card.featured {
-    border-color: #8B4513;
+    border-color: var(--brand-brown);
     transform: scale(1.02);
 }
 
@@ -440,7 +444,7 @@ body {
 .service-icon {
     width: 70px;
     height: 70px;
-    background: #8B4513;
+    background: var(--brand-brown);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -487,13 +491,13 @@ body {
 .service-price {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #8B4513;
+    color: var(--brand-brown);
     margin-bottom: 1.5rem;
 }
 
 .service-btn {
     display: inline-block;
-    background: #8B4513;
+    background: var(--brand-brown);
     color: #fff;
     padding: 0.8rem 2rem;
     border-radius: 6px;
@@ -505,7 +509,7 @@ body {
 }
 
 .service-btn:hover {
-    background: #6d3410;
+    background: var(--brand-brown-dark);
     transform: translateY(-1px);
 }
 
@@ -641,7 +645,7 @@ body {
 .method-icon {
     width: 50px;
     height: 50px;
-    background: #8B4513;
+    background: var(--brand-brown);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -822,11 +826,7 @@ body {
     border: 2px dashed #ddd;
 }
 
-.map-placeholder i {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    color: #8B4513;
-}
+.map-placeholder i { font-size: 4rem; margin-bottom: 1rem; color: var(--brand-brown); }
 
 .map-placeholder h3 {
     font-family: 'Playfair Display', serif;
@@ -839,7 +839,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: #8B4513;
+    color: var(--brand-brown);
     text-decoration: none;
     font-weight: 500;
     margin-top: 1rem;
@@ -850,7 +850,7 @@ body {
 }
 
 .map-link:hover {
-    background: #8B4513;
+    background: var(--brand-brown);
     color: #fff;
 }
 
@@ -1189,39 +1189,28 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 1.2rem 3rem;
-    background: #8B4513;
+    padding: 1.1rem 2.25rem;
+    background: var(--brand-brown);
     color: #fff;
     text-decoration: none;
     font-weight: 500;
     letter-spacing: 0.5px;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 2rem;
     border-radius: 9999px;
 }
 
-.cta-button:hover {
-    background: #6d3410;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
-}
+.cta-button:hover { background: var(--brand-brown-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
 
 .cta-button.primary {
     background: #8B4513;
 }
 
-.cta-button.secondary {
-    background: transparent;
-    color: #8B4513;
-    border: 2px solid #8B4513;
-}
+.cta-button.secondary { background: transparent; color: var(--brand-brown); border: 2px solid var(--brand-brown); }
 
-.cta-button.secondary:hover {
-    background: #8B4513;
-    color: #fff;
-}
+.cta-button.secondary:hover { background: var(--brand-brown); color: #fff; }
 
 .cta-buttons {
     display: flex;
@@ -1231,12 +1220,7 @@ body {
 }
 
 /* Footer */
-.footer {
-    background: #ffffff;
-    color: #1a1a1a;
-    padding: 4rem 0 2rem;
-    border-top: 1px solid #eaeaea;
-}
+.footer { background: #ffffff; color: #1a1a1a; padding: 4rem 0 2rem; border-top: 1px solid var(--border); }
 
 .footer-grid {
     display: grid;
@@ -1274,13 +1258,7 @@ body {
     color: #000;
 }
 
-.footer-bottom {
-    border-top: 1px solid #eaeaea;
-    padding-top: 2rem;
-    text-align: center;
-    color: #777;
-    font-size: 0.9rem;
-}
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; color: #777; font-size: 0.9rem; }
 
 /* Responsive Design */
 @media (max-width: 768px) {
