@@ -645,7 +645,7 @@
             .nav-links { display: none; }
             .nav-toggle { display: flex; }
 
-            .hero { height: 80vh; }
+            .hero { height: 100vh; height: 100svh; }
             .hero-content { bottom: 2rem; left: 1rem; right: 1rem; max-width: none; }
             .hero-description { font-size: 0.95rem; }
             .hero-button { bottom: 2rem; right: 1rem; }
@@ -667,7 +667,7 @@
 
         @media (max-width: 480px) {
             .footer-grid { grid-template-columns: 1fr; }
-            .hero { height: 70vh; }
+            .hero { height: 100vh; height: 100svh; }
             .hero-description { font-size: 0.9rem; }
             .minimal-btn { padding: 12px 18px; font-size: 13px; }
             .product-image { height: 200px; }
@@ -782,11 +782,13 @@
     <section class="section premium atelier" style="background:#fff;">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Atelier Services</h2>
+                <span class="eyebrow">Atelier</span>
+                <h2 class="section-title rule">Atelier Services</h2>
                 <p class="section-subtitle">Quiet luxury, measured carefully – from first fitting to final pressing</p>
             </div>
             <div class="values-grid">
                 <div class="value-card" style="border:1px solid #eee; box-shadow:none;">
+                    <div class="value-caption">Made to Measure</div>
                     <div class="value-title">Custom Tailoring</div>
                     <div class="value-text">Made-to-measure garments with emphasis on proportion, balance and lasting comfort.</div>
                     <div style="margin-top:1.25rem;">
@@ -794,6 +796,7 @@
                     </div>
                 </div>
                 <div class="value-card" style="border:1px solid #eee; box-shadow:none;">
+                    <div class="value-caption">Refinement</div>
                     <div class="value-title">Alterations</div>
                     <div class="value-text">Refinements and adjustments to restore clean lines and superior fit.</div>
                     <div style="margin-top:1.25rem;">
@@ -801,6 +804,7 @@
                     </div>
                 </div>
                 <div class="value-card" style="border:1px solid #eee; box-shadow:none;">
+                    <div class="value-caption">Guidance</div>
                     <div class="value-title">Consultation</div>
                     <div class="value-text">Considered advice on fabric, finish and occasion – at your pace.</div>
                     <div style="margin-top:1.25rem;">
@@ -816,7 +820,8 @@
         <div class="container">
             <div class="content-grid">
                 <div>
-                    <h2 class="section-title" style="margin-bottom:.5rem;">Heritage</h2>
+                    <span class="eyebrow">Legacy</span>
+                    <h2 class="section-title rule" style="margin-bottom:.5rem;">Heritage</h2>
                     <p class="section-subtitle" style="margin:0;">Three generations devoted to cut, cloth and craftsmanship</p>
                     <p class="lead-text" style="margin-top:1.5rem;">
                         Founded in the 1980s by Hafiz Ahmad, refined today by Umair Fiaz. Our approach values restraint over noise and quality over haste.
