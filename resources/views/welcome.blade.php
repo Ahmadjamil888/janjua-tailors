@@ -206,10 +206,28 @@
         .section {
             padding: 6rem 0;
             position: relative;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
         }
 
         .section.alt {
-            background: #fafafa;
+            background: #111;
+        }
+
+        .section.alt::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain2" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.3" fill="rgba(255,255,255,0.03)"/><circle cx="75" cy="75" r="0.3" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain2)"/></svg>');
         }
 
         .container {
@@ -228,17 +246,21 @@
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 500;
             margin-bottom: 1rem;
-            color: #111;
+            color: #fff;
             letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
         }
 
         .section-subtitle {
             font-size: 1rem;
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
             max-width: 500px;
             margin: 0 auto;
             font-weight: 300;
             line-height: 1.5;
+            position: relative;
+            z-index: 2;
         }
 
         /* Products Section */
@@ -247,20 +269,24 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 3rem;
             margin-top: 4rem;
+            position: relative;
+            z-index: 2;
         }
 
         .product-card {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 0;
             transition: all 0.4s ease;
-            border: 1px solid #eee;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            border-color: #111;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .product-image {
@@ -268,7 +294,7 @@
             height: 300px;
             overflow: hidden;
             position: relative;
-            background: #f8f8f8;
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .product-image img {
@@ -287,7 +313,7 @@
             align-items: center;
             justify-content: center;
             height: 100%;
-            color: #ccc;
+            color: rgba(255, 255, 255, 0.3);
             font-size: 3rem;
         }
 
@@ -295,13 +321,15 @@
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: #111;
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
             padding: 0.5rem 1rem;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .product-info {
@@ -310,7 +338,7 @@
 
         .product-brand {
             font-size: 0.75rem;
-            color: #666;
+            color: rgba(255, 255, 255, 0.6);
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
@@ -322,18 +350,18 @@
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #111;
+            color: #fff;
         }
 
         .product-price {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #111;
+            color: #fff;
             margin-bottom: 1rem;
         }
 
         .product-description {
-            color: #666;
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
             margin-bottom: 2rem;
             font-size: 0.9rem;
@@ -346,25 +374,28 @@
 
         .btn-primary {
             flex: 1;
-            background: #111;
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
             padding: 0.75rem 1.5rem;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             text-decoration: none;
             font-weight: 500;
             text-align: center;
             transition: all 0.3s ease;
             font-size: 0.9rem;
+            backdrop-filter: blur(10px);
         }
 
         .btn-primary:hover {
-            background: #333;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
             background: transparent;
-            color: #111;
-            border: 1px solid #111;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             padding: 0.75rem 1rem;
             text-decoration: none;
             font-weight: 500;
@@ -373,8 +404,9 @@
         }
 
         .btn-secondary:hover {
-            background: #111;
-            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
 
         /* Heritage Section */
@@ -383,12 +415,16 @@
             color: #fff;
         }
 
+        .heritage::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain3" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="0.4" fill="rgba(255,255,255,0.04)"/><circle cx="70" cy="70" r="0.4" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain3)"/></svg>');
+        }
+
         .heritage .section-title {
             color: #fff;
         }
 
         .heritage .section-subtitle {
-            color: #ccc;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .heritage-content {
@@ -396,12 +432,14 @@
             grid-template-columns: 1fr 2fr;
             gap: 5rem;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         .heritage-text {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #ddd;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .heritage-stats {
@@ -409,6 +447,8 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .stat-number {
@@ -421,7 +461,7 @@
 
         .stat-label {
             font-size: 0.9rem;
-            color: #999;
+            color: rgba(255, 255, 255, 0.6);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -431,6 +471,8 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 3rem;
+            position: relative;
+            z-index: 2;
         }
 
         .process-item {
@@ -442,13 +484,15 @@
             display: inline-block;
             width: 60px;
             height: 60px;
-            background: #111;
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             line-height: 60px;
             font-weight: 700;
             font-size: 1.2rem;
             margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
         }
 
         .process-title {
@@ -456,24 +500,30 @@
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #111;
+            color: #fff;
         }
 
         .process-text {
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
         }
 
         /* CTA Section */
         .cta {
-            background: #f8f8f8;
+            background: #000;
             text-align: center;
         }
 
+        .cta::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain4" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="0.3" fill="rgba(255,255,255,0.06)"/><circle cx="80" cy="80" r="0.3" fill="rgba(255,255,255,0.06)"/><circle cx="50" cy="50" r="0.2" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain4)"/></svg>');
+        }
+
         .cta-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             padding: 1.2rem 3rem;
-            background: #111;
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
             text-decoration: none;
             font-weight: 500;
@@ -482,10 +532,15 @@
             text-transform: uppercase;
             font-size: 14px;
             margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
         }
 
         .cta-button:hover {
-            background: #333;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
             transform: translateY(-2px);
         }
 

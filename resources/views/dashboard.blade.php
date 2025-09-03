@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -20,8 +20,22 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #1d1d1f;
-            background: #fbfbfd;
+            color: #fff;
+            background: #000;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+            z-index: -1;
         }
 
         /* Navigation */
@@ -30,9 +44,9 @@
             top: 0;
             width: 100%;
             height: 60px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
         }
 
@@ -55,7 +69,7 @@
         .nav-menu-icon,
         .nav-cart-icon {
             font-size: 20px;
-            color: #1d1d1f;
+            color: #fff;
             cursor: pointer;
             transition: opacity 0.3s ease;
         }
@@ -69,10 +83,10 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            font-family: "Didot", "Bodoni MT", "Garamond", "Palatino Linotype", "Times New Roman", Georgia, serif;
+            font-family: 'Playfair Display', serif;
             font-size: 24px;
             font-weight: 600;
-            color: #1d1d1f;
+            color: #fff;
             text-decoration: none;
             letter-spacing: -0.5px;
         }
@@ -89,8 +103,8 @@
         }
 
         .nav-auth-links a {
-            font-family: 'Arial', sans-serif;
-            color: #1d1d1f;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
             text-decoration: none;
             font-size: 14px;
             font-weight: 400;
@@ -118,15 +132,18 @@
         }
 
         .dashboard-header h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 36px;
             font-weight: 600;
-            color: #1d1d1f;
+            color: #fff;
             margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         .dashboard-header p {
-            color: #86868b;
+            color: rgba(255, 255, 255, 0.8);
             font-size: 18px;
+            font-weight: 300;
         }
 
         .dashboard-grid {
@@ -136,11 +153,26 @@
         }
 
         .sidebar {
-            background: white;
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0;
             padding: 32px;
             height: fit-content;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="sidebar-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="0.4" fill="rgba(255,255,255,0.04)"/><circle cx="70" cy="70" r="0.4" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23sidebar-grain)"/></svg>');
+            opacity: 0.3;
+            z-index: 0;
         }
 
         .sidebar-menu {
@@ -156,15 +188,18 @@
             align-items: center;
             gap: 12px;
             padding: 12px 16px;
-            color: #1d1d1f;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 0;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
 
         .sidebar-menu a:hover,
         .sidebar-menu a.active {
-            background: #f5f5f7;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
         }
 
         .sidebar-menu i {
@@ -173,10 +208,25 @@
         }
 
         .main-panel {
-            background: white;
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0;
             padding: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="panel-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.3" fill="rgba(255,255,255,0.03)"/><circle cx="75" cy="75" r="0.3" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23panel-grain)"/></svg>');
+            opacity: 0.3;
+            z-index: 0;
         }
 
         .welcome-section {
@@ -184,17 +234,25 @@
             padding: 60px 0;
         }
 
+        .welcome-section {
+            position: relative;
+            z-index: 2;
+        }
+
         .welcome-section h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 32px;
             font-weight: 600;
-            color: #1d1d1f;
+            color: #fff;
             margin-bottom: 16px;
+            letter-spacing: -0.5px;
         }
 
         .welcome-section p {
-            color: #86868b;
+            color: rgba(255, 255, 255, 0.8);
             font-size: 18px;
             margin-bottom: 32px;
+            font-weight: 300;
         }
 
         .quick-actions {
@@ -205,72 +263,106 @@
         }
 
         .action-card {
-            background: #f5f5f7;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 24px;
-            border-radius: 12px;
+            border-radius: 0;
             text-align: center;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="card-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.3" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23card-grain)"/></svg>');
+            opacity: 0.5;
+            z-index: 0;
         }
 
         .action-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .action-card i {
             font-size: 32px;
-            color: #1d1d1f;
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
         }
 
         .action-card h3 {
             font-size: 18px;
             font-weight: 600;
-            color: #1d1d1f;
+            color: #fff;
             margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
         }
 
         .action-card p {
-            color: #86868b;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 14px;
             margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
         }
 
         .action-card a {
             display: inline-block;
-            background: #1d1d1f;
-            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
             padding: 8px 16px;
-            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
             text-decoration: none;
             font-size: 14px;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
         }
 
         .action-card a:hover {
-            background: #424245;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         .logout-form {
             margin-top: 32px;
             padding-top: 32px;
-            border-top: 1px solid #e5e5e7;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
         }
 
         .logout-btn {
             width: 100%;
-            background: #ff3b30;
-            color: white;
-            border: none;
+            background: rgba(255, 59, 48, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 59, 48, 0.3);
             padding: 12px;
-            border-radius: 8px;
+            border-radius: 50px;
             font-size: 14px;
             cursor: pointer;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .logout-btn:hover {
-            background: #d70015;
+            background: rgba(255, 59, 48, 0.3);
+            border-color: rgba(255, 59, 48, 0.5);
+            transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {

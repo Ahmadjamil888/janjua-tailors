@@ -20,12 +20,26 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #1d1d1f;
-            background: #fbfbfd;
+            color: #fff;
+            background: #000;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+            z-index: -1;
         }
 
         .auth-container {
@@ -34,14 +48,27 @@
             max-width: 1200px;
             width: 100%;
             min-height: 100vh;
-            background: white;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .auth-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="auth-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="0.4" fill="rgba(255,255,255,0.04)"/><circle cx="70" cy="70" r="0.4" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23auth-grain)"/></svg>');
+            opacity: 0.3;
+            z-index: 0;
         }
 
         .auth-image {
-            background: linear-gradient(135deg, rgba(29, 29, 31, 0.8), rgba(29, 29, 31, 0.6)), url('/images/auth-bg-register.jpg');
-            background-size: cover;
-            background-position: center;
+            background: rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -49,9 +76,12 @@
             color: white;
             text-align: center;
             padding: 60px 40px;
+            position: relative;
+            z-index: 2;
         }
 
         .auth-image h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 48px;
             font-weight: 600;
             margin-bottom: 24px;
@@ -63,6 +93,7 @@
             opacity: 0.9;
             max-width: 400px;
             line-height: 1.6;
+            font-weight: 300;
         }
 
         .auth-form {
@@ -70,6 +101,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            z-index: 2;
         }
 
         .form-header {
@@ -78,15 +111,18 @@
         }
 
         .form-header h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 32px;
             font-weight: 600;
-            color: #1d1d1f;
+            color: #fff;
             margin-bottom: 12px;
+            letter-spacing: -0.5px;
         }
 
         .form-header p {
-            color: #86868b;
+            color: rgba(255, 255, 255, 0.8);
             font-size: 16px;
+            font-weight: 300;
         }
 
         .form-group {
@@ -97,43 +133,55 @@
             display: block;
             font-size: 14px;
             font-weight: 500;
-            color: #1d1d1f;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .form-input {
             width: 100%;
             padding: 16px 20px;
-            border: 2px solid #e5e5e7;
-            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0;
             font-size: 16px;
             transition: all 0.3s ease;
-            background: #fbfbfd;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            backdrop-filter: blur(10px);
         }
 
         .form-input:focus {
             outline: none;
-            border-color: #1d1d1f;
-            background: white;
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
         }
 
         .form-button {
             width: 100%;
-            padding: 16px;
-            background: #1d1d1f;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-size: 14px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .form-button:hover {
-            background: #424245;
-            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
         }
 
         .form-links {
@@ -141,25 +189,35 @@
         }
 
         .form-links a {
-            color: #1d1d1f;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             font-size: 14px;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .form-links a:hover {
-            opacity: 0.7;
+            color: #fff;
         }
 
         .form-divider {
             margin: 24px 0;
             text-align: center;
-            color: #86868b;
+            color: rgba(255, 255, 255, 0.6);
             font-size: 14px;
         }
 
+        .form-divider a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .form-divider a:hover {
+            color: #fff;
+        }
+
         .error-message {
-            color: #ff3b30;
+            color: #ff6b6b;
             font-size: 14px;
             margin-top: 8px;
         }
@@ -168,17 +226,26 @@
             position: absolute;
             top: 24px;
             left: 24px;
-            color: #1d1d1f;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             font-size: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
+            z-index: 10;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
         }
 
         .back-link:hover {
-            opacity: 0.7;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {
