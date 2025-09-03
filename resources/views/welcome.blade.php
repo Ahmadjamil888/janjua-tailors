@@ -121,16 +121,15 @@
             top: 0;
             width: 100%;
             height: 80px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: transparent;
+            border-bottom: none;
             z-index: 1000;
             transition: all 0.4s ease;
         }
 
         .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: transparent;
+            box-shadow: none;
         }
 
         .nav-container {
@@ -319,23 +318,21 @@
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            background: rgba(255, 255, 255, 0.15);
+            background: #611bf8;
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: none;
             padding: 14px 28px;
-            border-radius: 0;
+            border-radius: 9999px;
             text-decoration: none;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
         }
 
         .minimal-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.8);
+            background: #4607d0;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }

@@ -20,16 +20,15 @@ body {
     top: 0;
     width: 100%;
     height: 80px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: transparent;
+    border-bottom: none;
     z-index: 1000;
     transition: all 0.4s ease;
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    box-shadow: none;
 }
 
 .nav-container {
@@ -184,11 +183,11 @@ body {
 }
 
 .section-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 1rem;
-    color: #1a1a1a;
+    color: #000;
     letter-spacing: -0.5px;
 }
 
@@ -282,11 +281,11 @@ body {
 }
 
 .value-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
     margin-bottom: 1rem;
-    color: #1a1a1a;
+    color: #000;
 }
 
 .value-text {
@@ -335,11 +334,11 @@ body {
 }
 
 .member-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #1a1a1a;
+    color: #000;
 }
 
 .member-role {
@@ -530,11 +529,11 @@ body {
 }
 
 .step-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #1a1a1a;
+    color: #000;
 }
 
 .step-description {
@@ -569,11 +568,11 @@ body {
 }
 
 .specialty-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
     margin-bottom: 1rem;
-    color: #1a1a1a;
+    color: #000;
 }
 
 .specialty-text {
@@ -968,9 +967,9 @@ body {
 }
 
 .gallery-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
@@ -1147,11 +1146,11 @@ body {
 }
 
 .lightbox-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #1a1a1a;
+    color: #000;
 }
 
 .lightbox-description {
@@ -1164,23 +1163,23 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 1.2rem 3rem;
-    background: #8B4513;
+    padding: 1rem 2rem;
+    background: #611bf8;
     color: #fff;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.5px;
     transition: all 0.4s ease;
     text-transform: uppercase;
     font-size: 14px;
     margin-top: 2rem;
-    border-radius: 6px;
+    border-radius: 9999px;
 }
 
 .cta-button:hover {
-    background: #6d3410;
+    background: #4607d0;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .cta-button.primary {
@@ -1189,12 +1188,12 @@ body {
 
 .cta-button.secondary {
     background: transparent;
-    color: #8B4513;
-    border: 2px solid #8B4513;
+    color: #611bf8;
+    border: 2px solid #611bf8;
 }
 
 .cta-button.secondary:hover {
-    background: #8B4513;
+    background: #611bf8;
     color: #fff;
 }
 
