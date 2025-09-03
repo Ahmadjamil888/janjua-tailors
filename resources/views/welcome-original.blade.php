@@ -123,6 +123,9 @@
         .hero {
             height: 100vh;
             background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
             overflow: hidden;
         }
@@ -134,7 +137,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.6;
+            opacity: 0.4;
         }
 
         .hero::before {
@@ -149,57 +152,48 @@
         }
 
         .hero-content {
-            position: absolute;
-            bottom: 4rem;
-            left: 2rem;
+            text-align: center;
             color: #fff;
             z-index: 2;
-            max-width: 500px;
+            max-width: 800px;
+            padding: 0 2rem;
+            position: relative;
         }
 
-        .hero-description {
-            font-size: 1rem;
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            line-height: 0.9;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
             font-weight: 300;
+            margin-bottom: 3rem;
             opacity: 0.9;
-            letter-spacing: 0.5px;
-            line-height: 1.6;
+            letter-spacing: 1px;
         }
 
-        .hero-button {
-            position: absolute;
-            bottom: 4rem;
-            right: 4rem;
-            z-index: 2;
-        }
-
-        .minimal-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 3rem;
             background: transparent;
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 12px 20px;
-            border-radius: 50px;
             text-decoration: none;
+            border: 2px solid #fff;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
             font-size: 14px;
-            font-weight: 400;
-            transition: all 0.3s ease;
         }
 
-        .minimal-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.6);
-            transform: translateX(5px);
-        }
-
-        .minimal-btn i {
-            font-size: 12px;
-            transition: transform 0.3s ease;
-        }
-
-        .minimal-btn:hover i {
-            transform: translateX(3px);
+        .hero-cta:hover {
+            background: #fff;
+            color: #000;
         }
 
         /* Section Styles */
@@ -241,83 +235,44 @@
             line-height: 1.5;
         }
 
-        /* Products Section */
-        .products-grid {
+        /* Grid Layouts */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 3rem;
-            margin-top: 4rem;
         }
 
-        .product-card {
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* Cards */
+        .card {
             background: #fff;
+            padding: 3rem 2rem;
             border-radius: 0;
             transition: all 0.4s ease;
             border: 1px solid #eee;
-            overflow: hidden;
+            text-align: center;
         }
 
-        .product-card:hover {
+        .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             border-color: #111;
         }
 
-        .product-image {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            position: relative;
-            background: #f8f8f8;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-
-        .product-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #ccc;
+        .card-icon {
             font-size: 3rem;
+            color: #111;
+            margin-bottom: 2rem;
         }
 
-        .product-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: #111;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .product-info {
-            padding: 2rem;
-        }
-
-        .product-brand {
-            font-size: 0.75rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-name {
+        .card-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 600;
@@ -325,56 +280,9 @@
             color: #111;
         }
 
-        .product-price {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #111;
-            margin-bottom: 1rem;
-        }
-
-        .product-description {
+        .card-text {
             color: #666;
             line-height: 1.6;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-        }
-
-        .product-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn-primary {
-            flex: 1;
-            background: #111;
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            text-decoration: none;
-            font-weight: 500;
-            text-align: center;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary:hover {
-            background: #333;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #111;
-            border: 1px solid #111;
-            padding: 0.75rem 1rem;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .btn-secondary:hover {
-            background: #111;
-            color: #fff;
         }
 
         /* Heritage Section */
@@ -426,13 +334,130 @@
             letter-spacing: 1px;
         }
 
-        /* Process Section */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
+        /* Products Section */
+        .products {
+            background: #fafafa;
         }
 
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid #eee;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-color: #111;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-placeholder {
+            font-size: 3rem;
+            color: #ccc;
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-brand {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background: #111;
+            color: #fff;
+            border: 1px solid #111;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #111;
+            border: 1px solid #111;
+        }
+
+        .btn-secondary:hover {
+            background: #111;
+            color: #fff;
+        }
+
+        /* Process Section */
         .process-item {
             text-align: center;
             position: relative;
@@ -462,6 +487,69 @@
         .process-text {
             color: #666;
             line-height: 1.6;
+        }
+
+        /* Quality Section */
+        .quality {
+            background: #f8f8f8;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .quality-card {
+            background: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .quality-card.featured {
+            border-color: #111;
+            transform: scale(1.05);
+        }
+
+        .quality-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .quality-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+
+        .quality-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .quality-features {
+            list-style: none;
+            text-align: left;
+        }
+
+        .quality-features li {
+            padding: 0.5rem 0;
+            color: #666;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .quality-features li:before {
+            content: '✓';
+            color: #111;
+            font-weight: bold;
+            margin-right: 0.5rem;
         }
 
         /* CTA Section */
@@ -549,19 +637,8 @@
                 display: flex;
             }
 
-            .hero-content {
-                bottom: 2rem;
-                left: 1rem;
-                right: 1rem;
-                max-width: none;
-            }
-
-            .hero-button {
-                bottom: 2rem;
-                right: 2rem;
-            }
-
-            .products-grid {
+            .grid-2,
+            .grid-3 {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -575,7 +652,11 @@
                 grid-template-columns: 1fr;
             }
 
-            .process-grid {
+            .quality-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -596,15 +677,6 @@
         @media (max-width: 480px) {
             .footer-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .hero-description {
-                font-size: 0.9rem;
-            }
-
-            .minimal-btn {
-                padding: 10px 16px;
-                font-size: 13px;
             }
         }
     </style>
@@ -642,120 +714,10 @@
         <video class="hero-video" autoplay loop muted playsinline>
             <source src="{{ asset('202508291855 (1).mp4') }}" type="video/mp4">
         </video>
-        
         <div class="hero-content">
-            <p class="hero-description">Three generations of excellence in bespoke tailoring, serving Gujranwala and beyond with uncompromising quality and timeless craftsmanship.</p>
-        </div>
-        
-        <div class="hero-button">
-            <a href="{{ route('custom-order.start') }}" class="minimal-btn">
-                Explore <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Premium Fabrics</h2>
-                <p class="section-subtitle">Discover our curated collection of luxury fabrics from renowned brands worldwide</p>
-            </div>
-            
-            <div class="products-grid">
-                @php
-                    $products = \App\Models\Product::active()->take(6)->get();
-                @endphp
-                
-                @forelse($products as $product)
-                    <div class="product-card">
-                        <div class="product-image">
-                            @if($product->images && count($product->images) > 0)
-                                <img src="{{ asset('storage/' . $product->images[0]) }}" alt="{{ $product->name }}" loading="lazy">
-                            @else
-                                <div class="product-placeholder">
-                                    <i class="fas fa-swatches"></i>
-                                </div>
-                            @endif
-                            <div class="product-badge">{{ ucfirst($product->category ?? 'Premium') }}</div>
-                        </div>
-                        
-                        <div class="product-info">
-                            <div class="product-brand">{{ $product->brand ?? 'Janjua Tailors' }}</div>
-                            <h3 class="product-name">{{ $product->name }}</h3>
-                            <div class="product-price">Rs. {{ number_format($product->price) }}</div>
-                            <p class="product-description">{{ Str::limit($product->description, 100) }}</p>
-                            
-                            <div class="product-actions">
-                                <a href="{{ route('products.show', $product) }}" class="btn-primary">View Details</a>
-                                <a href="{{ route('custom-order.start') }}?fabric={{ $product->id }}" class="btn-secondary">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                @empty
-                    <!-- Sample products when no products exist -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <div class="product-placeholder">
-                                <i class="fas fa-swatches"></i>
-                            </div>
-                            <div class="product-badge">Premium</div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-brand">Janjua Tailors</div>
-                            <h3 class="product-name">Premium Cotton Blend</h3>
-                            <div class="product-price">Rs. 3,500</div>
-                            <p class="product-description">High-quality cotton blend perfect for formal wear and business attire with superior comfort.</p>
-                            <div class="product-actions">
-                                <a href="{{ route('products.index') }}" class="btn-primary">View Details</a>
-                                <a href="{{ route('custom-order.start') }}" class="btn-secondary">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <div class="product-placeholder">
-                                <i class="fas fa-swatches"></i>
-                            </div>
-                            <div class="product-badge">Luxury</div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-brand">Janjua Tailors</div>
-                            <h3 class="product-name">Silk Luxury Collection</h3>
-                            <div class="product-price">Rs. 8,500</div>
-                            <p class="product-description">Finest silk fabric with superior finish for special occasions and formal events.</p>
-                            <div class="product-actions">
-                                <a href="{{ route('products.index') }}" class="btn-primary">View Details</a>
-                                <a href="{{ route('custom-order.start') }}" class="btn-secondary">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <div class="product-placeholder">
-                                <i class="fas fa-swatches"></i>
-                            </div>
-                            <div class="product-badge">Royal</div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-brand">Janjua Tailors</div>
-                            <h3 class="product-name">Royal Wool Collection</h3>
-                            <div class="product-price">Rs. 12,000</div>
-                            <p class="product-description">Premium wool fabric with master craftsmanship for the ultimate luxury experience.</p>
-                            <div class="product-actions">
-                                <a href="{{ route('products.index') }}" class="btn-primary">View Details</a>
-                                <a href="{{ route('custom-order.start') }}" class="btn-secondary">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforelse
-            </div>
-            
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="{{ route('products.index') }}" class="cta-button">View All Fabrics</a>
-            </div>
+            <h1 class="hero-title">Janjua Tailors</h1>
+            <p class="hero-subtitle">Three Generations of Excellence</p>
+            <a href="{{ route('custom-order.start') }}" class="hero-cta">Start Your Order</a>
         </div>
     </section>
 
@@ -792,6 +754,107 @@
         </div>
     </section>
 
+    <!-- Products Section -->
+    <section class="section products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Premium Fabrics</h2>
+                <p class="section-subtitle">Discover our curated collection of luxury fabrics from renowned brands</p>
+            </div>
+            
+            <div class="products-grid">
+                @php
+                    $products = \App\Models\Product::active()->take(6)->get();
+                @endphp
+                
+                @forelse($products as $product)
+                    <div class="product-card">
+                        <div class="product-image">
+                            @if($product->images && count($product->images) > 0)
+                                <img src="{{ asset('storage/' . $product->images[0]) }}" alt="{{ $product->name }}" loading="lazy">
+                            @else
+                                <div class="product-placeholder">
+                                    <i class="fas fa-swatches"></i>
+                                </div>
+                            @endif
+                        </div>
+                        
+                        <div class="product-info">
+                            <div class="product-brand">{{ $product->brand ?? 'Janjua Tailors' }}</div>
+                            <h3 class="product-name">{{ $product->name }}</h3>
+                            <div class="product-price">Rs. {{ number_format($product->price) }}</div>
+                            <p class="product-description">{{ Str::limit($product->description, 100) }}</p>
+                            
+                            <div class="product-actions">
+                                <a href="{{ route('products.show', $product) }}" class="btn btn-primary">View Details</a>
+                                <a href="{{ route('custom-order.start') }}?fabric={{ $product->id }}" class="btn btn-secondary">Order Now</a>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <!-- Default products when no products exist -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder">
+                                <i class="fas fa-swatches"></i>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Janjua Tailors</div>
+                            <h3 class="product-name">Premium Cotton Blend</h3>
+                            <div class="product-price">Rs. 3,500</div>
+                            <p class="product-description">High-quality cotton blend perfect for formal wear and business attire.</p>
+                            <div class="product-actions">
+                                <a href="{{ route('products.index') }}" class="btn btn-primary">View Details</a>
+                                <a href="{{ route('custom-order.start') }}" class="btn btn-secondary">Order Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder">
+                                <i class="fas fa-swatches"></i>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Janjua Tailors</div>
+                            <h3 class="product-name">Silk Luxury Collection</h3>
+                            <div class="product-price">Rs. 8,500</div>
+                            <p class="product-description">Finest silk fabric with superior finish for special occasions.</p>
+                            <div class="product-actions">
+                                <a href="{{ route('products.index') }}" class="btn btn-primary">View Details</a>
+                                <a href="{{ route('custom-order.start') }}" class="btn btn-secondary">Order Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder">
+                                <i class="fas fa-swatches"></i>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Janjua Tailors</div>
+                            <h3 class="product-name">Royal Wool Collection</h3>
+                            <div class="product-price">Rs. 12,000</div>
+                            <p class="product-description">Premium wool fabric with master craftsmanship for ultimate luxury.</p>
+                            <div class="product-actions">
+                                <a href="{{ route('products.index') }}" class="btn btn-primary">View Details</a>
+                                <a href="{{ route('custom-order.start') }}" class="btn btn-secondary">Order Now</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforelse
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="{{ route('products.index') }}" class="cta-button">View All Fabrics</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Process Section -->
     <section class="section">
         <div class="container">
@@ -800,7 +863,7 @@
                 <p class="section-subtitle">From consultation to completion</p>
             </div>
             
-            <div class="process-grid">
+            <div class="grid grid-3">
                 <div class="process-item">
                     <div class="process-number">1</div>
                     <h3 class="process-title">Consultation</h3>
@@ -822,93 +885,15 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section cta">
+    <!-- Quality Section -->
+    <section class="section quality">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Ready to Create Your Perfect Garment?</h2>
-                <p class="section-subtitle">Start your custom order today and experience the luxury of bespoke tailoring</p>
-                <a href="{{ route('custom-order.start') }}" class="cta-button">Start Custom Order</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h4 class="footer-title">Janjua Tailors</h4>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('pages.heritage') }}">Our Heritage</a></li>
-                        <li><a href="{{ route('pages.craftsmanship') }}">Craftsmanship</a></li>
-                        <li><a href="{{ route('pages.quality') }}">Quality</a></li>
-                        <li><a href="{{ route('pages.testimonials') }}">Testimonials</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="footer-title">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('custom-order.start') }}">Custom Tailoring</a></li>
-                        <li><a href="{{ route('pages.alterations') }}">Alterations</a></li>
-                        <li><a href="{{ route('pages.delivery') }}">Delivery</a></li>
-                        <li><a href="{{ route('pages.care') }}">Garment Care</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="footer-title">Products</h4>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('products.index') }}">Premium Fabrics</a></li>
-                        <li><a href="{{ route('products.index') }}">Luxury Collection</a></li>
-                        <li><a href="{{ route('products.index') }}">Royal Series</a></li>
-                        <li><a href="{{ route('pages.size-guide') }}">Size Guide</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="footer-title">Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('pages.contact') }}">Contact Us</a></li>
-                        <li><a href="{{ route('pages.faq') }}">FAQ</a></li>
-                        <li><a href="{{ route('pages.privacy') }}">Privacy Policy</a></li>
-                        <li><a href="{{ route('pages.terms') }}">Terms of Service</a></li>
-                    </ul>
-                </div>
+                <h2 class="section-title">Quality Tiers</h2>
+                <p class="section-subtitle">Each garment crafted on-demand to your specifications</p>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; {{ date('Y') }} Janjua Tailors. All rights reserved. | Crafted with excellence in Gujranwala, Pakistan</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        document.getElementById('navToggle').addEventListener('click', function() {
-            // Add mobile menu functionality here if needed
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+            <div class="quality-grid">
+                <div class="quality-card">
+                    <h3 class="quality-title">Premium</h3>
+                    <p class=
