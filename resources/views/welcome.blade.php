@@ -8,7 +8,8 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/jt-logo.svg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -19,7 +20,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
             color: #111;
             background: #fff;
@@ -54,9 +55,9 @@
         }
 
         .nav-brand {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Lato', sans-serif;
             font-size: 28px;
-            font-weight: 600;
+            font-weight: 700;
             color: #fff;
             text-decoration: none;
             letter-spacing: -0.5px;
@@ -206,28 +207,13 @@
         .section {
             padding: 6rem 0;
             position: relative;
-            background: #000;
-            color: #fff;
+            background: #f7f7f7;
+            color: #464646;
             overflow: hidden;
         }
 
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
-        }
-
         .section.alt {
-            background: #111;
-        }
-
-        .section.alt::before {
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain2" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.3" fill="rgba(255,255,255,0.03)"/><circle cx="75" cy="75" r="0.3" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain2)"/></svg>');
+            background: #eeeeee;
         }
 
         .container {
@@ -242,25 +228,22 @@
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Lato', sans-serif;
             font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 500;
+            font-weight: 700;
             margin-bottom: 1rem;
-            color: #fff;
+            color: #282828;
             letter-spacing: -0.5px;
-            position: relative;
-            z-index: 2;
         }
 
         .section-subtitle {
+            font-family: 'Open Sans', sans-serif;
             font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: #676767;
             max-width: 500px;
             margin: 0 auto;
-            font-weight: 300;
+            font-weight: 400;
             line-height: 1.5;
-            position: relative;
-            z-index: 2;
         }
 
         /* Products Section */
@@ -274,19 +257,18 @@
         }
 
         .product-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 0;
+            background: #fff;
+            border-radius: 12px;
             transition: all 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #e0e0e0;
             overflow: hidden;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #cacaca;
         }
 
         .product-image {
@@ -294,7 +276,7 @@
             height: 300px;
             overflow: hidden;
             position: relative;
-            background: rgba(0, 0, 0, 0.3);
+            background: #f7f7f7;
         }
 
         .product-image img {
@@ -313,7 +295,7 @@
             align-items: center;
             justify-content: center;
             height: 100%;
-            color: rgba(255, 255, 255, 0.3);
+            color: #b1b1b1;
             font-size: 3rem;
         }
 
@@ -321,15 +303,14 @@
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: #611bf8;
             color: #fff;
             padding: 0.5rem 1rem;
+            border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
         }
 
         .product-info {
@@ -338,7 +319,7 @@
 
         .product-brand {
             font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: #7f7f7f;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
@@ -346,22 +327,22 @@
         }
 
         .product-name {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Lato', sans-serif;
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 1rem;
-            color: #fff;
+            color: #282828;
         }
 
         .product-price {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #fff;
+            color: #611bf8;
             margin-bottom: 1rem;
         }
 
         .product-description {
-            color: rgba(255, 255, 255, 0.7);
+            color: #676767;
             line-height: 1.6;
             margin-bottom: 2rem;
             font-size: 0.9rem;
@@ -374,29 +355,29 @@
 
         .btn-primary {
             flex: 1;
-            background: rgba(255, 255, 255, 0.1);
+            background: #611bf8;
             color: #fff;
             padding: 0.75rem 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
             text-align: center;
             transition: all 0.3s ease;
             font-size: 0.9rem;
-            backdrop-filter: blur(10px);
         }
 
         .btn-primary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-2px);
+            background: #4607d0;
+            transform: translateY(-1px);
         }
 
         .btn-secondary {
             background: transparent;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #611bf8;
+            border: 2px solid #611bf8;
             padding: 0.75rem 1rem;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -404,27 +385,22 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
+            background: #611bf8;
+            color: #fff;
         }
 
         /* Heritage Section */
         .heritage {
-            background: #111;
-            color: #fff;
-        }
-
-        .heritage::before {
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain3" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="0.4" fill="rgba(255,255,255,0.04)"/><circle cx="70" cy="70" r="0.4" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain3)"/></svg>');
+            background: #eeeeee;
+            color: #464646;
         }
 
         .heritage .section-title {
-            color: #fff;
+            color: #282828;
         }
 
         .heritage .section-subtitle {
-            color: rgba(255, 255, 255, 0.8);
+            color: #676767;
         }
 
         .heritage-content {
@@ -432,14 +408,12 @@
             grid-template-columns: 1fr 2fr;
             gap: 5rem;
             align-items: center;
-            position: relative;
-            z-index: 2;
         }
 
         .heritage-text {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
+            color: #545454;
         }
 
         .heritage-stats {
@@ -447,21 +421,19 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             text-align: center;
-            position: relative;
-            z-index: 2;
         }
 
         .stat-number {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Lato', sans-serif;
             font-size: 3rem;
             font-weight: 700;
-            color: #fff;
+            color: #611bf8;
             display: block;
         }
 
         .stat-label {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: #7f7f7f;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -471,51 +443,42 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 3rem;
-            position: relative;
-            z-index: 2;
         }
 
         .process-item {
             text-align: center;
-            position: relative;
         }
 
         .process-number {
             display: inline-block;
             width: 60px;
             height: 60px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #611bf8;
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             line-height: 60px;
             font-weight: 700;
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
         }
 
         .process-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Lato', sans-serif;
             font-size: 1.3rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 1rem;
-            color: #fff;
+            color: #282828;
         }
 
         .process-text {
-            color: rgba(255, 255, 255, 0.8);
+            color: #676767;
             line-height: 1.6;
         }
 
         /* CTA Section */
         .cta {
-            background: #000;
+            background: #f7f7f7;
             text-align: center;
-        }
-
-        .cta::before {
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain4" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="0.3" fill="rgba(255,255,255,0.06)"/><circle cx="80" cy="80" r="0.3" fill="rgba(255,255,255,0.06)"/><circle cx="50" cy="50" r="0.2" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain4)"/></svg>');
         }
 
         .cta-button {
@@ -523,7 +486,7 @@
             align-items: center;
             gap: 0.5rem;
             padding: 1.2rem 3rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: #611bf8;
             color: #fff;
             text-decoration: none;
             font-weight: 500;
@@ -532,21 +495,17 @@
             text-transform: uppercase;
             font-size: 14px;
             margin-top: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 2;
+            border-radius: 6px;
         }
 
         .cta-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
+            background: #4607d0;
             transform: translateY(-2px);
         }
 
         /* Footer */
         .footer {
-            background: #111;
+            background: #282828;
             color: #fff;
             padding: 4rem 0 2rem;
         }
@@ -559,7 +518,8 @@
         }
 
         .footer-title {
-            font-weight: 600;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
             margin-bottom: 1rem;
             color: #fff;
             text-transform: uppercase;
@@ -576,7 +536,7 @@
         }
 
         .footer-links a {
-            color: #999;
+            color: #b1b1b1;
             text-decoration: none;
             transition: color 0.3s ease;
             font-size: 0.9rem;
@@ -587,10 +547,10 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid #333;
+            border-top: 1px solid #545454;
             padding-top: 2rem;
             text-align: center;
-            color: #666;
+            color: #999999;
             font-size: 0.9rem;
         }
 
@@ -719,7 +679,7 @@
             
             <div class="products-grid">
                 @php
-                    $products = \App\Models\Product::active()->take(6)->get();
+                    $products = \App\Models\Product::where('status', 'active')->take(6)->get();
                 @endphp
                 
                 @forelse($products as $product)
@@ -748,62 +708,10 @@
                         </div>
                     </div>
                 @empty
-                    <!-- Sample products when no products exist -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <div class="product-placeholder">
-                                <i class="fas fa-swatches"></i>
-                            </div>
-                            <div class="product-badge">Premium</div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-brand">Janjua Tailors</div>
-                            <h3 class="product-name">Premium Cotton Blend</h3>
-                            <div class="product-price">Rs. 3,500</div>
-                            <p class="product-description">High-quality cotton blend perfect for formal wear and business attire with superior comfort.</p>
-                            <div class="product-actions">
-                                <a href="{{ route('products.index') }}" class="btn-primary">View Details</a>
-                                <a href="{{ route('custom-order.start') }}" class="btn-secondary">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <div class="product-placeholder">
-                                <i class="fas fa-swatches"></i>
-                            </div>
-                            <div class="product-badge">Luxury</div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-brand">Janjua Tailors</div>
-                            <h3 class="product-name">Silk Luxury Collection</h3>
-                            <div class="product-price">Rs. 8,500</div>
-                            <p class="product-description">Finest silk fabric with superior finish for special occasions and formal events.</p>
-                            <div class="product-actions">
-                                <a href="{{ route('products.index') }}" class="btn-primary">View Details</a>
-                                <a href="{{ route('custom-order.start') }}" class="btn-secondary">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <div class="product-placeholder">
-                                <i class="fas fa-swatches"></i>
-                            </div>
-                            <div class="product-badge">Royal</div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-brand">Janjua Tailors</div>
-                            <h3 class="product-name">Royal Wool Collection</h3>
-                            <div class="product-price">Rs. 12,000</div>
-                            <p class="product-description">Premium wool fabric with master craftsmanship for the ultimate luxury experience.</p>
-                            <div class="product-actions">
-                                <a href="{{ route('products.index') }}" class="btn-primary">View Details</a>
-                                <a href="{{ route('custom-order.start') }}" class="btn-secondary">Order</a>
-                            </div>
-                        </div>
+                    <div class="text-center py-12">
+                        <i class="fas fa-swatches text-6xl text-gray-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-600 mb-2">No Products Available</h3>
+                        <p class="text-gray-500">Check back soon for our premium fabric collection.</p>
                     </div>
                 @endforelse
             </div>
