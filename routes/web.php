@@ -163,5 +163,6 @@ Route::get('/care', function () { return view('pages.care'); })->name('pages.car
 Route::get('/privacy', function () { return view('pages.privacy'); })->name('pages.privacy');
 Route::get('/terms', function () { return view('pages.terms'); })->name('pages.terms');
 Route::get('/sitemap', function () { return view('pages.sitemap'); })->name('pages.sitemap');
+Route::get('/consultation', function () { return view('pages.consultation'); })->name('pages.consultation');
 
 require __DIR__.'/auth.php';
