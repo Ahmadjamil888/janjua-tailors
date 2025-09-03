@@ -50,7 +50,7 @@
             "longitude": 74.1945
         },
         "openingHours": "Mo-Sa 09:00-20:00",
-        "priceRange": "$$",
+        "priceRange": "$",
         "image": "{{ asset('images/janjua-tailors-logo.jpg') }}",
         "sameAs": [
             "https://www.facebook.com/janjuatailors",
@@ -196,6 +196,9 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
         }
 
         .nav-toggle span {
@@ -204,6 +207,59 @@
             background: #1a1a1a;
             margin: 3px 0;
             transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            width: 100%;
+            height: calc(100vh - 80px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            transition: left 0.3s ease;
+            padding: 2rem;
+        }
+
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .mobile-nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: #8B4513;
+            padding-left: 1rem;
         }
 
         /* Hero Section */
@@ -324,7 +380,7 @@
         }
 
         .section-title {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
             margin-bottom: 1rem;
@@ -333,7 +389,6 @@
         }
 
         .section-subtitle {
-            font-family: 'Open Sans', sans-serif;
             font-size: 1rem;
             color: #676767;
             max-width: 500px;
@@ -423,7 +478,7 @@
         }
 
         .product-name {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
@@ -520,7 +575,7 @@
         }
 
         .stat-number {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: 3rem;
             font-weight: 700;
             color: #611bf8;
@@ -559,7 +614,7 @@
         }
 
         .process-title {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 1rem;
@@ -614,7 +669,7 @@
         }
 
         .footer-title {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
             margin-bottom: 1rem;
             color: #fff;
@@ -727,17 +782,16 @@
             <a href="{{ url('/') }}" class="nav-brand">Janjua Tailors</a>
             
             <ul class="nav-links">
-                <li><a href="{{ route('pages.about') }}">About</a></li>
-                <li><a href="{{ route('pages.services') }}">Services</a></li>
+                <li><a href="{{ route('pages.heritage') }}">Heritage</a></li>
+                <li><a href="{{ route('pages.craftsmanship') }}">Craftsmanship</a></li>
                 <li><a href="{{ route('products.index') }}">Fabrics</a></li>
-                <li><a href="{{ route('pages.gallery') }}">Gallery</a></li>
-                <li><a href="{{ route('pages.contact') }}">Contact</a></li>
                 <li><a href="{{ route('custom-order.start') }}">Custom Order</a></li>
                 @auth
                     <li><a href="{{ route('my-orders') }}">My Orders</a></li>
                     <li><a href="{{ route('dashboard') }}">Account</a></li>
                 @else
                     <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Sign Up</a></li>
                 @endauth
             </ul>
             
@@ -930,7 +984,7 @@
                         <li><a href="{{ route('custom-order.start') }}">Custom Tailoring</a></li>
                         <li><a href="{{ route('pages.alterations') }}">Alterations</a></li>
                         <li><a href="{{ route('pages.delivery') }}">Delivery</a></li>
-                        <li><a href="{{ route('pages.care') }}">Garment Care</a></li>
+                        <li><a href="{{ route('pages.consultation') }}">Consultation</a></li>
                     </ul>
                 </div>
                 
@@ -939,8 +993,8 @@
                     <ul class="footer-links">
                         <li><a href="{{ route('products.index') }}">Premium Fabrics</a></li>
                         <li><a href="{{ route('products.index') }}">Luxury Collection</a></li>
-                        <li><a href="{{ route('products.index') }}">Royal Series</a></li>
-                        <li><a href="{{ route('pages.size-guide') }}">Size Guide</a></li>
+                        <li><a href="{{ route('products.index') }}">Seasonal Fabrics</a></li>
+                        <li><a href="{{ route('products.index') }}">Accessories</a></li>
                     </ul>
                 </div>
                 
