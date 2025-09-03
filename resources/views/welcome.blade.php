@@ -799,180 +799,160 @@
         </div>
     </section>
 
-    <!-- Products Section -->
+    <!-- Signature Fabrics (Old-money minimal) -->
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Premium Fabrics</h2>
-                <p class="section-subtitle">Discover our curated collection of luxury fabrics from renowned brands worldwide</p>
+                <h2 class="section-title">Signature Fabrics</h2>
+                <p class="section-subtitle">A considered selection of refined cloths, chosen for drape, handle and longevity</p>
             </div>
-            
+            @php
+                $products = \App\Models\Product::active()->take(6)->get();
+            @endphp
             <div class="products-grid">
-                @php
-                    $products = \App\Models\Product::active()->take(6)->get();
-                @endphp
-                
                 @forelse($products as $product)
-                    <div class="product-card">
-                        <div class="product-image">
+                    <div class="product-card" style="border-radius:12px; border:1px solid #e6e6e6; box-shadow:none;">
+                        <div class="product-image" style="background:#fafafa; height:280px;">
                             @if($product->images && count($product->images) > 0)
                                 <img src="{{ asset('storage/' . $product->images[0]) }}" alt="{{ $product->name }}" loading="lazy">
                             @else
                                 <div class="product-placeholder">
-                                    <i class="fas fa-swatches"></i>
+                                    <i class="fas fa-fabric"></i>
                                 </div>
                             @endif
-                            <div class="product-badge">{{ ucfirst($product->category ?? 'Premium') }}</div>
                         </div>
-                        
-                        <div class="product-info">
-                            <div class="product-brand">{{ $product->brand ?? 'Janjua Tailors' }}</div>
-                            <h3 class="product-name">{{ $product->name }}</h3>
-                            <div class="product-price">Rs. {{ number_format($product->price) }}</div>
-                            <p class="product-description">{{ Str::limit($product->description, 100) }}</p>
-                            
-                            <div class="product-actions">
-                                <a href="{{ route('products.show', $product) }}" class="btn-primary">View Details</a>
-                                <a href="{{ route('custom-order.start') }}?fabric={{ $product->id }}" class="btn-secondary">Order</a>
+                        <div class="product-info" style="padding:1.5rem;">
+                            <div class="product-brand" style="color:#777;">{{ $product->brand ?? 'Janjua Tailors' }}</div>
+                            <h3 class="product-name" style="font-family:'Playfair Display',serif; font-weight:700; color:#1a1a1a;">{{ $product->name }}</h3>
+                            <div class="product-price" style="color:#8B4513; font-weight:700;">Rs. {{ number_format($product->price) }}</div>
+                            <div class="product-actions" style="gap:.5rem;">
+                                <a href="{{ route('products.show', $product) }}" class="cta-button" style="padding:.7rem 1.25rem; font-size:.85rem;">View</a>
+                                <a href="{{ route('custom-order.start') }}?fabric={{ $product->id }}" class="cta-button secondary" style="padding:.7rem 1.25rem; font-size:.85rem;">Order</a>
                             </div>
                         </div>
                     </div>
                 @empty
-                    <div class="text-center py-12">
-                        <i class="fas fa-swatches text-6xl text-gray-400 mb-4"></i>
-                        <h3 class="text-xl font-semibold text-gray-600 mb-2">No Products Available</h3>
-                        <p class="text-gray-500">Check back soon for our premium fabric collection.</p>
-                    </div>
+                    <div class="text-center" style="padding:3rem 1rem; color:#666;">Our latest fabrics are being prepared. Please check back shortly.</div>
                 @endforelse
             </div>
-            
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="{{ route('products.index') }}" class="cta-button">View All Fabrics</a>
+            <div style="text-align:center; margin-top:2.5rem;">
+                <a href="{{ route('products.index') }}" class="cta-button">Browse All Fabrics</a>
             </div>
         </div>
     </section>
 
-    <!-- Heritage Section -->
-    <section class="section heritage">
+    <!-- Atelier Services -->
+    <section class="section premium" style="background:#fff;">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Our Legacy</h2>
-                <p class="section-subtitle">From Hafiz Ahmad's vision to today's innovation</p>
+                <h2 class="section-title">Atelier Services</h2>
+                <p class="section-subtitle">Quiet luxury, measured carefully – from first fitting to final pressing</p>
             </div>
-            
-            <div class="heritage-content">
-                <div class="heritage-text">
-                    <p>Since the 1980s, Janjua Tailors has been synonymous with excellence in Gujranwala. What started as Hafiz Ahmad's vision has evolved through three generations, each adding their unique touch while preserving the timeless art of bespoke tailoring.</p>
-                    
-                    <p>Today, under Umair Fiaz's leadership, we continue to honor traditional craftsmanship while embracing modern techniques, ensuring every garment meets the highest standards of quality and precision.</p>
-                </div>
-                
-                <div class="heritage-stats">
-                    <div>
-                        <span class="stat-number">40+</span>
-                        <span class="stat-label">Years Experience</span>
+            <div class="values-grid">
+                <div class="value-card" style="border:1px solid #eee; box-shadow:none;">
+                    <div class="value-title">Custom Tailoring</div>
+                    <div class="value-text">Made-to-measure garments with emphasis on proportion, balance and lasting comfort.</div>
+                    <div style="margin-top:1.25rem;">
+                        <a href="{{ route('custom-order.start') }}" class="cta-button" style="padding:.7rem 1.25rem; font-size:.85rem;">Start Order</a>
                     </div>
-                    <div>
+                </div>
+                <div class="value-card" style="border:1px solid #eee; box-shadow:none;">
+                    <div class="value-title">Alterations</div>
+                    <div class="value-text">Refinements and adjustments to restore clean lines and superior fit.</div>
+                    <div style="margin-top:1.25rem;">
+                        <a href="{{ route('pages.alterations') }}" class="cta-button secondary" style="padding:.7rem 1.25rem; font-size:.85rem;">Learn More</a>
+                    </div>
+                </div>
+                <div class="value-card" style="border:1px solid #eee; box-shadow:none;">
+                    <div class="value-title">Consultation</div>
+                    <div class="value-text">Considered advice on fabric, finish and occasion – at your pace.</div>
+                    <div style="margin-top:1.25rem;">
+                        <a href="{{ route('pages.consultation') }}" class="cta-button secondary" style="padding:.7rem 1.25rem; font-size:.85rem;">Book</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Heritage (quiet and minimal) -->
+    <section class="section" style="background:#fafafa;">
+        <div class="container">
+            <div class="content-grid">
+                <div>
+                    <h2 class="section-title" style="margin-bottom:.5rem;">Heritage</h2>
+                    <p class="section-subtitle" style="margin:0;">Three generations devoted to cut, cloth and craftsmanship</p>
+                    <p class="lead-text" style="margin-top:1.5rem;">
+                        Founded in the 1980s by Hafiz Ahmad, refined today by Umair Fiaz. Our approach values restraint over noise and quality over haste.
+                    </p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">40+</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                    <div class="stat-item">
                         <span class="stat-number">3</span>
                         <span class="stat-label">Generations</span>
                     </div>
-                    <div>
+                    <div class="stat-item">
                         <span class="stat-number">1000+</span>
-                        <span class="stat-label">Happy Clients</span>
+                        <span class="stat-label">Clients</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="section">
+    <!-- Gentle CTA -->
+    <section class="section" style="text-align:center;">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Process</h2>
-                <p class="section-subtitle">From consultation to completion</p>
-            </div>
-            
-            <div class="process-grid">
-                <div class="process-item">
-                    <div class="process-number">1</div>
-                    <h3 class="process-title">Consultation</h3>
-                    <p class="process-text">We begin with understanding your vision, style preferences, and specific requirements for your custom garment.</p>
-                </div>
-                
-                <div class="process-item">
-                    <div class="process-number">2</div>
-                    <h3 class="process-title">Measurement</h3>
-                    <p class="process-text">Our master tailors take precise measurements to ensure a perfect fit that complements your body type.</p>
-                </div>
-                
-                <div class="process-item">
-                    <div class="process-number">3</div>
-                    <h3 class="process-title">Crafting</h3>
-                    <p class="process-text">Each garment is meticulously handcrafted using traditional techniques and the finest materials available.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section cta">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Ready to Create Your Perfect Garment?</h2>
-                <p class="section-subtitle">Start your custom order today and experience the luxury of bespoke tailoring</p>
+            <h2 class="section-title">Begin With a Fitting</h2>
+            <p class="section-subtitle">A quiet conversation, precise measurements, considered details</p>
+            <div class="cta-buttons" style="margin-top:1.5rem;">
                 <a href="{{ route('custom-order.start') }}" class="cta-button">Start Custom Order</a>
+                <a href="{{ route('products.index') }}" class="cta-button secondary">Explore Fabrics</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (white, simple) -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div>
                     <h4 class="footer-title">Janjua Tailors</h4>
                     <ul class="footer-links">
-                        <li><a href="{{ route('pages.heritage') }}">Our Heritage</a></li>
+                        <li><a href="{{ route('pages.heritage') }}">Heritage</a></li>
                         <li><a href="{{ route('pages.craftsmanship') }}">Craftsmanship</a></li>
                         <li><a href="{{ route('pages.quality') }}">Quality</a></li>
-                        <li><a href="{{ route('pages.testimonials') }}">Testimonials</a></li>
                     </ul>
                 </div>
-                
                 <div>
-                    <h4 class="footer-title">Services</h4>
+                    <h4 class="footer-title">Atelier</h4>
                     <ul class="footer-links">
-                        <li><a href="{{ route('custom-order.start') }}">Custom Tailoring</a></li>
+                        <li><a href="{{ route('custom-order.start') }}">Custom Order</a></li>
                         <li><a href="{{ route('pages.alterations') }}">Alterations</a></li>
-                        <li><a href="{{ route('pages.delivery') }}">Delivery</a></li>
                         <li><a href="{{ route('pages.consultation') }}">Consultation</a></li>
                     </ul>
                 </div>
-                
                 <div>
-                    <h4 class="footer-title">Products</h4>
+                    <h4 class="footer-title">Fabrics</h4>
                     <ul class="footer-links">
-                        <li><a href="{{ route('products.index') }}">Premium Fabrics</a></li>
-                        <li><a href="{{ route('products.index') }}">Luxury Collection</a></li>
-                        <li><a href="{{ route('products.index') }}">Seasonal Fabrics</a></li>
-                        <li><a href="{{ route('products.index') }}">Accessories</a></li>
+                        <li><a href="{{ route('products.index') }}">All Fabrics</a></li>
+                        <li><a href="{{ route('products.index') }}">Seasonal</a></li>
                     </ul>
                 </div>
-                
                 <div>
-                    <h4 class="footer-title">Support</h4>
+                    <h4 class="footer-title">Contact</h4>
                     <ul class="footer-links">
-                        <li><a href="{{ route('pages.contact') }}">Contact Us</a></li>
-                        <li><a href="{{ route('pages.faq') }}">FAQ</a></li>
-                        <li><a href="{{ route('pages.privacy') }}">Privacy Policy</a></li>
-                        <li><a href="{{ route('pages.terms') }}">Terms of Service</a></li>
+                        <li><a href="{{ route('pages.contact') }}">Get in touch</a></li>
+                        <li><a href="{{ route('pages.privacy') }}">Privacy</a></li>
+                        <li><a href="{{ route('pages.terms') }}">Terms</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; {{ date('Y') }} Janjua Tailors. All rights reserved. | Crafted with excellence in Gujranwala, Pakistan</p>
+                <p>&copy; {{ date('Y') }} Janjua Tailors. All rights reserved.</p>
             </div>
         </div>
     </footer>
