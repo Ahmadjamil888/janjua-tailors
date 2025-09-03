@@ -29,69 +29,69 @@
     
     <!-- Local Business Schema -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Janjua Tailors",
-        "description": "Premier custom tailoring service in Gujranwala offering bespoke shalwar kameez, suits, and formal wear with three generations of expertise.",
-        "url": "{{ url('/') }}",
-        "telephone": "+92-300-1234567",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Main Bazaar",
-            "addressLocality": "Gujranwala",
-            "addressRegion": "Punjab",
-            "postalCode": "52250",
-            "addressCountry": "PK"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 32.1877,
-            "longitude": 74.1945
-        },
-        "openingHours": "Mo-Sa 09:00-20:00",
-        "priceRange": "$",
-        "image": "{{ asset('images/janjua-tailors-logo.jpg') }}",
-        "sameAs": [
-            "https://www.facebook.com/janjuatailors",
-            "https://www.instagram.com/janjuatailors"
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'LocalBusiness',
+        'name' => 'Janjua Tailors',
+        'description' => 'Premier custom tailoring service in Gujranwala offering bespoke shalwar kameez, suits, and formal wear with three generations of expertise.',
+        'url' => url('/'),
+        'telephone' => '+92-300-1234567',
+        'address' => [
+            '@type' => 'PostalAddress',
+            'streetAddress' => 'Main Bazaar',
+            'addressLocality' => 'Gujranwala',
+            'addressRegion' => 'Punjab',
+            'postalCode' => '52250',
+            'addressCountry' => 'PK',
         ],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "150"
-        },
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Tailoring Services",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Shalwar Kameez",
-                        "description": "Bespoke traditional Pakistani formal wear"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Suits",
-                        "description": "Tailored business and formal suits"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Alterations",
-                        "description": "Professional clothing alterations and adjustments"
-                    }
-                }
-            ]
-        }
-    }
+        'geo' => [
+            '@type' => 'GeoCoordinates',
+            'latitude' => 32.1877,
+            'longitude' => 74.1945,
+        ],
+        'openingHours' => 'Mo-Sa 09:00-20:00',
+        'priceRange' => '$',
+        'image' => asset('images/janjua-tailors-logo.jpg'),
+        'sameAs' => [
+            'https://www.facebook.com/janjuatailors',
+            'https://www.instagram.com/janjuatailors',
+        ],
+        'aggregateRating' => [
+            '@type' => 'AggregateRating',
+            'ratingValue' => '4.9',
+            'reviewCount' => '150',
+        ],
+        'hasOfferCatalog' => [
+            '@type' => 'OfferCatalog',
+            'name' => 'Tailoring Services',
+            'itemListElement' => [
+                [
+                    '@type' => 'Offer',
+                    'itemOffered' => [
+                        '@type' => 'Service',
+                        'name' => 'Custom Shalwar Kameez',
+                        'description' => 'Bespoke traditional Pakistani formal wear',
+                    ],
+                ],
+                [
+                    '@type' => 'Offer',
+                    'itemOffered' => [
+                        '@type' => 'Service',
+                        'name' => 'Custom Suits',
+                        'description' => 'Tailored business and formal suits',
+                    ],
+                ],
+                [
+                    '@type' => 'Offer',
+                    'itemOffered' => [
+                        '@type' => 'Service',
+                        'name' => 'Alterations',
+                        'description' => 'Professional clothing alterations and adjustments',
+                    ],
+                ],
+            ],
+        ],
+    ], JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}
     </script>
     
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/jt-logo.svg') }}">
