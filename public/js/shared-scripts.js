@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Form validation helpers
-    const forms = document.querySelectorAll('form');
+    // Form validation helpers (skip for auth forms)
+    const forms = document.querySelectorAll('form:not([action*="login"]):not([action*="register"])');
     forms.forEach(form => {
         const inputs = form.querySelectorAll('input, select, textarea');
         
@@ -140,7 +140,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitButtons = document.querySelectorAll('button[type="submit"], .btn-submit');
     submitButtons.forEach(button => {
         button.addEventListener('click', function() {
-            if (this.form && this.form.checkValidity()) {
+            // For auth forms, just show loading state without validation check
+            const isAuthForm = this.form && (this.form.action.includes('login') || this.form.action.includes('register'));
+            
+            if (isAuthForm || (this.form && this.form.checkValidity())) {
                 this.classList.add('loading');
                 this.disabled = true;
                 const originalText = this.textContent;

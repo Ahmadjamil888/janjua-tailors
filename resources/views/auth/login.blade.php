@@ -381,7 +381,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login') }}" id="loginForm">
                     @csrf
 
                     <div class="form-group">
@@ -405,7 +405,7 @@
                         <label for="remember_me">Remember me</label>
                     </div>
 
-                    <button type="submit" class="form-button">Sign In</button>
+                    <button type="submit" class="form-button" id="loginButton">Sign In</button>
 
                     <div class="form-links">
                         @if (Route::has('password.request'))
@@ -421,5 +421,31 @@
         </div>
     </div>
     <script src="{{ asset('js/shared-scripts.js') }}"></script>
+    <script>
+        // Debug authentication form
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const loginButton = document.getElementById('loginButton');
+            
+            if (loginForm && loginButton) {
+                console.log('Login form found:', loginForm.action);
+                
+                loginForm.addEventListener('submit', function(e) {
+                    console.log('Form submission started');
+                    console.log('Email:', document.getElementById('email').value);
+                    console.log('Password length:', document.getElementById('password').value.length);
+                    
+                    // Don't prevent default - let it submit
+                    loginButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+                    loginButton.disabled = true;
+                });
+                
+                loginButton.addEventListener('click', function(e) {
+                    console.log('Login button clicked');
+                    // Don't prevent default
+                });
+            }
+        });
+    </script>
 </body>
 </html>

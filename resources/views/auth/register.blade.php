@@ -354,7 +354,7 @@
                     <p>Start your journey with personalized luxury tailoring</p>
                 </div>
 
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('register') }}" id="registerForm">
                     @csrf
 
                     <div class="form-group">
@@ -389,7 +389,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="form-button">Create Account</button>
+                    <button type="submit" class="form-button" id="registerButton">Create Account</button>
 
                     <div class="form-divider">
                         Already have an account? <a href="{{ route('login') }}">Sign in</a>
@@ -399,5 +399,32 @@
         </div>
     </div>
     <script src="{{ asset('js/shared-scripts.js') }}"></script>
+    <script>
+        // Debug registration form
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.getElementById('registerForm');
+            const registerButton = document.getElementById('registerButton');
+            
+            if (registerForm && registerButton) {
+                console.log('Register form found:', registerForm.action);
+                
+                registerForm.addEventListener('submit', function(e) {
+                    console.log('Registration form submission started');
+                    console.log('Name:', document.getElementById('name').value);
+                    console.log('Email:', document.getElementById('email').value);
+                    console.log('Password length:', document.getElementById('password').value.length);
+                    
+                    // Don't prevent default - let it submit
+                    registerButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+                    registerButton.disabled = true;
+                });
+                
+                registerButton.addEventListener('click', function(e) {
+                    console.log('Register button clicked');
+                    // Don't prevent default
+                });
+            }
+        });
+    </script>
 </body>
 </html>
