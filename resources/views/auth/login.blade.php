@@ -12,12 +12,33 @@
     <link rel="stylesheet" href="{{ asset('css/shared-styles.css') }}">
     
     <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2B48C;
+            --text-dark: #2C2C2C;
+            --text-muted: #666666;
+            --bg-light: #FAFAFA;
+            --border-light: #E5E5E5;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --border-radius: 8px;
+            --border-radius-pill: 9999px;
+            --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            color: var(--text-dark);
+            line-height: 1.6;
         }
 
         .auth-container {
@@ -26,10 +47,11 @@
             max-width: 1200px;
             width: 100%;
             min-height: 100vh;
+            margin: 0 auto;
         }
 
         .auth-image {
-            background: rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #A0522D 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -38,22 +60,38 @@
             text-align: center;
             padding: 60px 40px;
             position: relative;
+            overflow: hidden;
+        }
+
+        .auth-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
         }
 
         .auth-image h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-heading);
             font-size: 48px;
             font-weight: 600;
             margin-bottom: 24px;
             letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
         }
 
         .auth-image p {
             font-size: 18px;
-            opacity: 0.9;
+            opacity: 0.95;
             max-width: 400px;
             line-height: 1.6;
             font-weight: 300;
+            position: relative;
+            z-index: 2;
         }
 
         .auth-form {
@@ -61,55 +99,80 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            background: white;
             position: relative;
         }
 
-        .auth-form {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: var(--shadow-elevated);
+            border: 1px solid var(--border-light);
             position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .auth-form::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="form-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="0.4" fill="rgba(255,255,255,0.04)"/><circle cx="70" cy="70" r="0.4" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23form-grain)"/></svg>');
-            opacity: 0.3;
-            z-index: 0;
+        .form-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
 
         .form-header {
             text-align: center;
             margin-bottom: 48px;
-            position: relative;
-            z-index: 2;
         }
 
         .form-header h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-heading);
             font-size: 32px;
             font-weight: 600;
-            color: #fff;
+            color: var(--text-dark);
             margin-bottom: 12px;
             letter-spacing: -0.5px;
         }
 
         .form-header p {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-muted);
             font-size: 16px;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .form-group {
             margin-bottom: 24px;
             position: relative;
-            z-index: 2;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-family: var(--font-body);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--border-light);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-family: var(--font-body);
+            background: white;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .form-input:hover {
+            border-color: #ccc;
         }
 
         .form-checkbox {
@@ -119,90 +182,103 @@
             margin-bottom: 32px;
         }
 
-        .form-checkbox input {
-            width: 18px;
-            height: 18px;
+        .form-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary-color);
+            cursor: pointer;
         }
 
         .form-checkbox label {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: var(--font-body);
         }
 
         .form-button {
             width: 100%;
             padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            font-size: 14px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-pill);
+            font-size: 16px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-bottom: 24px;
-            backdrop-filter: blur(10px);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            position: relative;
-            z-index: 2;
+            font-family: var(--font-body);
+            text-transform: none;
+            letter-spacing: 0;
         }
 
         .form-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.6);
+            background: #A0522D;
             transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(139, 69, 19, 0.3);
+        }
+
+        .form-button:active {
+            transform: translateY(0);
         }
 
         .form-links {
             text-align: center;
-            position: relative;
-            z-index: 2;
+            margin-bottom: 24px;
         }
 
         .form-links a {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--primary-color);
             text-decoration: none;
             font-size: 14px;
+            font-weight: 500;
             transition: all 0.3s ease;
+            font-family: var(--font-body);
         }
 
         .form-links a:hover {
-            color: #fff;
+            color: #A0522D;
+            text-decoration: underline;
         }
 
         .form-divider {
             margin: 24px 0;
             text-align: center;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-muted);
             font-size: 14px;
-            position: relative;
-            z-index: 2;
+            font-family: var(--font-body);
         }
 
         .form-divider a {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--primary-color);
             text-decoration: none;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .form-divider a:hover {
-            color: #fff;
+            color: #A0522D;
+            text-decoration: underline;
         }
 
         .error-message {
-            color: #ff3b30;
+            color: #dc3545;
             font-size: 14px;
             margin-top: 8px;
+            font-family: var(--font-body);
+            font-weight: 400;
         }
 
         .success-message {
             background: #d4edda;
             color: #155724;
-            padding: 12px 16px;
-            border-radius: 8px;
+            padding: 16px 20px;
+            border-radius: var(--border-radius);
             margin-bottom: 24px;
             font-size: 14px;
+            border: 1px solid #c3e6cb;
+            font-family: var(--font-body);
         }
 
         .back-link {
@@ -210,6 +286,26 @@
             top: 24px;
             left: 24px;
             z-index: 10;
+            background: white;
+            color: var(--primary-color);
+            padding: 12px 20px;
+            border-radius: var(--border-radius-pill);
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+
+        .back-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .back-link i {
+            margin-right: 8px;
         }
 
         @media (max-width: 768px) {
@@ -225,12 +321,37 @@
                 padding: 40px 24px;
             }
 
+            .form-card {
+                padding: 32px 24px;
+                margin: 20px;
+            }
+
             .form-header h2 {
                 font-size: 28px;
             }
 
-            .auth-image h1 {
-                font-size: 36px;
+            .back-link {
+                top: 16px;
+                left: 16px;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-card {
+                margin: 10px;
+                padding: 24px 20px;
+            }
+
+            .form-input {
+                padding: 14px 16px;
+                font-size: 16px;
+            }
+
+            .form-button {
+                padding: 14px 20px;
+                font-size: 16px;
             }
         }
     </style>
@@ -248,53 +369,55 @@
         </div>
 
         <div class="auth-form">
-            <div class="form-header">
-                <h2>Sign In</h2>
-                <p>Access your account to manage orders and preferences</p>
+            <div class="form-card">
+                <div class="form-header">
+                    <h2>Sign In</h2>
+                    <p>Access your account to manage orders and preferences</p>
+                </div>
+
+                @if (session('status'))
+                    <div class="success-message">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" class="form-input">
+                        @error('email')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input id="password" type="password" name="password" required autocomplete="current-password" class="form-input">
+                        @error('password')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input id="remember_me" type="checkbox" name="remember">
+                        <label for="remember_me">Remember me</label>
+                    </div>
+
+                    <button type="submit" class="form-button">Sign In</button>
+
+                    <div class="form-links">
+                        @if (Route::has('password.request'))
+                            <a href="{{ route('password.request') }}">Forgot your password?</a>
+                        @endif
+                    </div>
+
+                    <div class="form-divider">
+                        Don't have an account? <a href="{{ route('register') }}">Sign up</a>
+                    </div>
+                </form>
             </div>
-
-            @if (session('status'))
-                <div class="success-message">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" class="form-input">
-                    @error('email')
-                        <div class="error-message">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <input id="password" type="password" name="password" required autocomplete="current-password" class="form-input">
-                    @error('password')
-                        <div class="error-message">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="form-checkbox">
-                    <input id="remember_me" type="checkbox" name="remember">
-                    <label for="remember_me">Remember me</label>
-                </div>
-
-                <button type="submit" class="form-button">Sign In</button>
-
-                <div class="form-links">
-                    @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}">Forgot your password?</a>
-                    @endif
-                </div>
-
-                <div class="form-divider">
-                    Don't have an account? <a href="{{ route('register') }}">Sign up</a>
-                </div>
-            </form>
         </div>
     </div>
     <script src="{{ asset('js/shared-scripts.js') }}"></script>
