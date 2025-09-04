@@ -422,7 +422,7 @@
     </div>
     <script src="{{ asset('js/shared-scripts.js') }}"></script>
     <script>
-        // Debug authentication form
+        // Authentication form handler
         document.addEventListener('DOMContentLoaded', function() {
             const loginForm = document.getElementById('loginForm');
             const loginButton = document.getElementById('loginButton');
@@ -430,19 +430,40 @@
             if (loginForm && loginButton) {
                 console.log('Login form found:', loginForm.action);
                 
+                // Handle form submission
                 loginForm.addEventListener('submit', function(e) {
                     console.log('Form submission started');
                     console.log('Email:', document.getElementById('email').value);
                     console.log('Password length:', document.getElementById('password').value.length);
                     
-                    // Don't prevent default - let it submit
+                    // Show loading state
                     loginButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
                     loginButton.disabled = true;
+                    
+                    // Allow form to submit naturally
+                    // Don't call e.preventDefault()
                 });
                 
+                // Handle button click
                 loginButton.addEventListener('click', function(e) {
                     console.log('Login button clicked');
-                    // Don't prevent default
+                    
+                    // Validate form before submission
+                    const email = document.getElementById('email').value.trim();
+                    const password = document.getElementById('password').value.trim();
+                    
+                    if (!email || !password) {
+                        e.preventDefault();
+                        alert('Please fill in all required fields');
+                        return false;
+                    }
+                    
+                    // Show loading state
+                    loginButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+                    loginButton.disabled = true;
+                    
+                    // Submit the form
+                    loginForm.submit();
                 });
             }
         });

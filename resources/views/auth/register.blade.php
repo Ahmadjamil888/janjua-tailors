@@ -400,7 +400,7 @@
     </div>
     <script src="{{ asset('js/shared-scripts.js') }}"></script>
     <script>
-        // Debug registration form
+        // Registration form handler
         document.addEventListener('DOMContentLoaded', function() {
             const registerForm = document.getElementById('registerForm');
             const registerButton = document.getElementById('registerButton');
@@ -408,20 +408,55 @@
             if (registerForm && registerButton) {
                 console.log('Register form found:', registerForm.action);
                 
+                // Handle form submission
                 registerForm.addEventListener('submit', function(e) {
                     console.log('Registration form submission started');
                     console.log('Name:', document.getElementById('name').value);
                     console.log('Email:', document.getElementById('email').value);
                     console.log('Password length:', document.getElementById('password').value.length);
                     
-                    // Don't prevent default - let it submit
+                    // Show loading state
                     registerButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
                     registerButton.disabled = true;
+                    
+                    // Allow form to submit naturally
+                    // Don't call e.preventDefault()
                 });
                 
+                // Handle button click
                 registerButton.addEventListener('click', function(e) {
                     console.log('Register button clicked');
-                    // Don't prevent default
+                    
+                    // Validate form before submission
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const password = document.getElementById('password').value.trim();
+                    const passwordConfirm = document.getElementById('password_confirmation').value.trim();
+                    
+                    if (!name || !email || !password || !passwordConfirm) {
+                        e.preventDefault();
+                        alert('Please fill in all required fields');
+                        return false;
+                    }
+                    
+                    if (password !== passwordConfirm) {
+                        e.preventDefault();
+                        alert('Passwords do not match');
+                        return false;
+                    }
+                    
+                    if (password.length < 8) {
+                        e.preventDefault();
+                        alert('Password must be at least 8 characters long');
+                        return false;
+                    }
+                    
+                    // Show loading state
+                    registerButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+                    registerButton.disabled = true;
+                    
+                    // Submit the form
+                    registerForm.submit();
                 });
             }
         });

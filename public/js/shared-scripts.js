@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Form validation helpers (skip for auth forms)
-    const forms = document.querySelectorAll('form:not([action*="login"]):not([action*="register"])');
+    const forms = document.querySelectorAll('form:not([id="loginForm"]):not([id="registerForm"])');
     forms.forEach(form => {
         const inputs = form.querySelectorAll('input, select, textarea');
         
@@ -136,14 +136,11 @@ document.addEventListener('DOMContentLoaded', function() {
         field.parentNode.appendChild(errorDiv);
     }
 
-    // Loading states for buttons
-    const submitButtons = document.querySelectorAll('button[type="submit"], .btn-submit');
+    // Loading states for buttons (skip auth forms)
+    const submitButtons = document.querySelectorAll('button[type="submit"]:not(#loginButton):not(#registerButton), .btn-submit');
     submitButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // For auth forms, just show loading state without validation check
-            const isAuthForm = this.form && (this.form.action.includes('login') || this.form.action.includes('register'));
-            
-            if (isAuthForm || (this.form && this.form.checkValidity())) {
+            if (this.form && this.form.checkValidity()) {
                 this.classList.add('loading');
                 this.disabled = true;
                 const originalText = this.textContent;
